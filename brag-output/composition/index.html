@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>videos con IA — brag</title>
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "InterDisplay"; src: url("assets/InterDisplay-Medium.otf"); font-weight: 500; }
+      @font-face { font-family: "InterDisplay"; src: url("assets/InterDisplay-Bold.otf"); font-weight: 700; }
+      @font-face { font-family: "InterDisplay"; src: url("assets/InterDisplay-Black.otf"); font-weight: 900; }
+      @font-face { font-family: "Mono"; src: url("assets/DejaVuSansMono.ttf"); font-weight: 400; }
+
+      :root {
+        --bg: #0d0e12;
+        --ink: #f4f1ea;
+        --dim: #a29f99;
+        --coral: #ff5b2e;
+        --violet: #8b6cff;
+        --green: #6ee7a0;
+        --panel: #16181f;
+        --line: #2a2d38;
+      }
+      body { margin: 0; background: var(--bg); color: var(--ink); font-family: "InterDisplay", sans-serif; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+
+      /* fondo */
+      #bg { position: absolute; inset: 0; }
+      .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.32; }
+      #blob-a { width: 900px; height: 900px; left: -200px; top: -300px; background: var(--coral); }
+      #blob-b { width: 1000px; height: 1000px; left: 1100px; top: 300px; background: var(--violet); }
+      #grid {
+        position: absolute; inset: 0; opacity: 0.07;
+        background-image: linear-gradient(var(--ink) 1px, transparent 1px), linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+
+      .scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+      /* 1 · chat */
+      #chat { width: 1240px; background: var(--panel); border: 1px solid var(--line); border-radius: 28px; padding: 40px 48px 48px; box-shadow: 0 40px 120px rgba(0,0,0,0.5); }
+      #chat-head { display: flex; align-items: center; gap: 14px; font-size: 26px; font-weight: 500; color: var(--dim); margin-bottom: 30px; }
+      #chat-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--coral); }
+      #chat-text { font-size: 64px; font-weight: 700; line-height: 1.18; letter-spacing: -1px; min-height: 152px; }
+      #chat-text .ch { opacity: 0; }
+      #caret { display: inline-block; width: 5px; height: 62px; background: var(--coral); vertical-align: -8px; margin-left: 4px; }
+
+      /* 2 · reveal */
+      #big { font-size: 230px; font-weight: 900; letter-spacing: -8px; line-height: 1; }
+      #big-sub { font-size: 76px; font-weight: 700; letter-spacing: -2px; margin-top: 36px; text-align: center; width: 1500px; }
+      #big-sub em { font-style: normal; color: var(--coral); }
+
+      /* 3 · terminal */
+      #t-cap { font-size: 72px; font-weight: 900; letter-spacing: -2px; margin-bottom: 44px; }
+      #term { width: 1240px; background: #0a0b0e; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,0.55); }
+      #term-bar { height: 52px; display: flex; align-items: center; gap: 12px; padding: 0 22px; background: #14161c; }
+      .tl-dot { width: 15px; height: 15px; border-radius: 50%; background: #3a3d48; }
+      #term-body { padding: 30px 40px 38px; font-family: "Mono", monospace; font-size: 32px; line-height: 1.6; }
+      .tline { opacity: 0; white-space: pre; }
+      .ok { color: var(--green); }
+      .muted { color: var(--dim); }
+      #prompt .ch { opacity: 0; }
+      #ready { color: var(--ink); font-weight: 400; }
+
+      /* 4 · cards */
+      #c-head { font-size: 84px; font-weight: 900; letter-spacing: -3px; margin-bottom: 56px; }
+      #c-head em { font-style: normal; color: var(--coral); }
+      #cards { display: flex; gap: 40px; }
+      .card { width: 470px; height: 380px; box-sizing: border-box; border-radius: 30px; background: var(--panel); border: 1px solid var(--line); padding: 44px; display: flex; flex-direction: column; justify-content: space-between; }
+      .card-num { font-size: 150px; font-weight: 900; letter-spacing: -6px; line-height: 0.9; }
+      .card-name { font-size: 50px; font-weight: 700; letter-spacing: -1px; }
+      .card-desc { font-size: 30px; font-weight: 500; color: var(--dim); margin-top: 8px; }
+      #card-hf .card-num { color: var(--coral); }
+      #card-rm .card-num { color: var(--violet); }
+      #card-br .card-num { color: var(--green); }
+
+      /* 5 · auto */
+      #a-head { font-size: 120px; font-weight: 900; letter-spacing: -4px; text-align: center; width: 1600px; line-height: 1.05; }
+      #a-code { margin-top: 56px; font-family: "Mono", monospace; font-size: 32px; color: var(--dim); background: #0a0b0e; border: 1px solid var(--line); border-radius: 18px; padding: 26px 36px; }
+      #a-checks { margin-top: 30px; display: flex; gap: 28px; font-family: "Mono", monospace; font-size: 34px; }
+      .pill { padding: 14px 28px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); }
+
+      /* 6 · outro */
+      #o-line { font-size: 120px; font-weight: 900; letter-spacing: -4px; }
+      #o-line em { font-style: normal; color: var(--coral); font-family: "Mono", monospace; font-weight: 400; letter-spacing: -2px; }
+      #o-mark { display: flex; align-items: center; gap: 26px; margin-top: 60px; }
+      #o-logo { width: 84px; height: 84px; border-radius: 22px; background: var(--coral); display: flex; align-items: center; justify-content: center; }
+      #o-play { width: 0; height: 0; border-top: 20px solid transparent; border-bottom: 20px solid transparent; border-left: 32px solid var(--bg); margin-left: 8px; }
+      #o-word { font-size: 72px; font-weight: 900; letter-spacing: -2px; }
+      #o-sub { font-size: 46px; font-weight: 500; color: var(--dim); margin-top: 28px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="20">
+      <div id="bg" class="clip" data-start="0" data-duration="20" data-track-index="0">
+        <div id="blob-a" class="blob" data-layout-allow-overflow></div>
+        <div id="blob-b" class="blob" data-layout-allow-overflow></div>
+        <div id="grid"></div>
+      </div>
+
+      <section id="s1" class="scene clip" data-start="0" data-duration="3" data-track-index="1">
+        <div id="chat">
+          <div id="chat-head"><div id="chat-dot"></div>Claude Code</div>
+          <div id="chat-text"></div>
+        </div>
+      </section>
+
+      <section id="s2" class="scene clip" data-start="3" data-duration="3.5" data-track-index="1">
+        <div id="big">Yo no programo.</div>
+        <div id="big-sub">Igual tengo un <em>estudio de motion graphics.</em></div>
+      </section>
+
+      <section id="s3" class="scene clip" data-start="6.5" data-duration="4" data-track-index="1">
+        <div id="t-cap">Todo revisado. Todo instalado.</div>
+        <div id="term">
+          <div id="term-bar"><div class="tl-dot"></div><div class="tl-dot"></div><div class="tl-dot"></div></div>
+          <div id="term-body">
+            <div id="prompt"></div>
+            <div class="tline" id="tl1"><span class="ok">✓</span> Node.js          <span class="muted">v22.22.0</span></div>
+            <div class="tline" id="tl2"><span class="ok">✓</span> FFmpeg           <span class="muted">6.1.1</span></div>
+            <div class="tline" id="tl3"><span class="ok">✓</span> Chrome           <span class="muted">Headless Shell</span></div>
+            <div class="tline" id="tl4"><span class="ok">✓</span> Memory           <span class="muted">15.7 GB</span></div>
+            <div class="tline" id="tl5"><span class="ok">◇</span> <span id="ready">Ready to render.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="s4" class="scene clip" data-start="10.5" data-duration="4" data-track-index="1">
+        <div id="c-head"><em>24 skills</em> de video. Listas.</div>
+        <div id="cards">
+          <div class="card" id="card-hf"><div class="card-num">10</div><div><div class="card-name">HyperFrames</div><div class="card-desc">videos con HTML</div></div></div>
+          <div class="card" id="card-rm"><div class="card-num">12</div><div><div class="card-name">Remotion</div><div class="card-desc">videos con React</div></div></div>
+          <div class="card" id="card-br"><div class="card-num">2</div><div><div class="card-name">brag</div><div class="card-desc">videos de lanzamiento</div></div></div>
+        </div>
+      </section>
+
+      <section id="s5" class="scene clip" data-start="14.5" data-duration="2.5" data-track-index="1">
+        <div id="a-head">Cada sesión se prepara sola.</div>
+        <div id="a-code"># Prepara el estudio de video al abrir una sesion en la nube.</div>
+        <div id="a-checks">
+          <div class="pill" id="pill1"><span class="ok">✓</span> ffmpeg</div>
+          <div class="pill" id="pill2"><span class="ok">✓</span> Chrome</div>
+          <div class="pill" id="pill3"><span class="ok">✓</span> skills</div>
+        </div>
+      </section>
+
+      <section id="s6" class="scene clip" data-start="17" data-duration="3" data-track-index="1">
+        <div id="o-line">Este video lo hizo <em>/brag</em>.</div>
+        <div id="o-mark"><div id="o-logo"><div id="o-play"></div></div><div id="o-word">videos con IA</div></div>
+        <div id="o-sub">Pídelo en español.</div>
+      </section>
+
+      <audio id="music" src="assets/music.wav" data-start="0" data-duration="20" data-track-index="5" data-volume="1"></audio>
+    </div>
+
+    <script>
+      // Texto tecleado: un span por carácter, revelado por el timeline.
+      function splitChars(el, text) {
+        return Array.from(text).map((c) => {
+          const s = document.createElement("span");
+          s.className = "ch";
+          s.textContent = c;
+          el.appendChild(s);
+          return s;
+        });
+      }
+      const chatChars = splitChars(document.getElementById("chat-text"), "Prepárame un estudio de motion graphics. Yo no programo.");
+      const caret = document.createElement("span");
+      caret.id = "caret";
+      document.getElementById("chat-text").appendChild(caret);
+      const promptEl = document.getElementById("prompt");
+      const p0 = document.createElement("span");
+      p0.className = "muted";
+      p0.textContent = "$ ";
+      promptEl.appendChild(p0);
+      const promptChars = splitChars(promptEl, "npx hyperframes doctor");
+
+      const tl = gsap.timeline({ paused: true });
+      const out = "power3.out";
+
+      // fondo vivo
+      tl.fromTo("#blob-a", { x: 0, y: 0 }, { x: 520, y: 260, duration: 20, ease: "sine.inOut" }, 0);
+      tl.fromTo("#blob-b", { x: 0, y: 0 }, { x: -600, y: -320, duration: 20, ease: "sine.inOut" }, 0);
+      tl.fromTo("#grid", { backgroundPositionY: "0px" }, { backgroundPositionY: "160px", duration: 20, ease: "none" }, 0);
+
+      // 1 · chat (0–3)
+      tl.fromTo("#chat", { y: 60, opacity: 0, scale: 0.96 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: out }, 0);
+      chatChars.forEach((c, i) => tl.set(c, { opacity: 1 }, 0.3 + i * 0.026));
+      [0.2, 0.75, 2.05, 2.55].forEach((t, i) => tl.set("#caret", { opacity: i % 2 ? 1 : 0.15 }, t));
+      tl.to("#chat", { y: -80, opacity: 0, duration: 0.28, ease: "power2.in" }, 2.72);
+
+      // 2 · reveal (3–6.5)
+      tl.fromTo("#big", { y: 120, opacity: 0, scale: 1.15 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, 3.02);
+      tl.to("#big", { scale: 0.62, y: -30, duration: 0.5, ease: "power3.inOut" }, 4.2);
+      tl.fromTo("#big-sub", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: out }, 4.4);
+      tl.to(["#big", "#big-sub"], { opacity: 0, y: "-=50", duration: 0.25, ease: "power2.in", stagger: 0.04 }, 6.2);
+
+      // 3 · terminal (6.5–10.5)
+      tl.fromTo("#t-cap", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: out }, 6.55);
+      tl.fromTo("#term", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: out }, 6.65);
+      promptChars.forEach((c, i) => tl.set(c, { opacity: 1 }, 6.95 + i * 0.022));
+      ["#tl1", "#tl2", "#tl3", "#tl4"].forEach((id, i) =>
+        tl.fromTo(id, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.22, ease: out }, 7.6 + i * 0.28)
+      );
+      tl.fromTo("#tl5", { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.3, ease: out }, 8.85);
+      tl.fromTo("#ready", { color: "#f4f1ea" }, { color: "#6ee7a0", duration: 0.4 }, 9.0);
+      tl.to(["#t-cap", "#term"], { opacity: 0, y: -50, duration: 0.25, ease: "power2.in", stagger: 0.04 }, 10.2);
+
+      // 4 · tarjetas (10.5–14.5)
+      ["#card-hf", "#card-rm", "#card-br"].forEach((id, i) =>
+        tl.fromTo(id, { y: 90, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 10.6 + i * 0.18)
+      );
+      tl.fromTo("#c-head", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: out }, 11.35);
+      tl.to(["#c-head", "#cards"], { opacity: 0, y: -50, duration: 0.25, ease: "power2.in", stagger: 0.04 }, 14.2);
+
+      // 5 · arranque automático (14.5–17)
+      tl.fromTo("#a-head", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: out }, 14.55);
+      tl.fromTo("#a-code", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: out }, 14.95);
+      ["#pill1", "#pill2", "#pill3"].forEach((id, i) =>
+        tl.fromTo(id, { scale: 0.7, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }, 15.3 + i * 0.16)
+      );
+      tl.to(["#a-head", "#a-code", "#a-checks"], { opacity: 0, y: -50, duration: 0.25, ease: "power2.in", stagger: 0.03 }, 16.72);
+
+      // 6 · outro (17–20)
+      tl.fromTo("#o-line", { y: 70, opacity: 0, scale: 1.08 }, { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "expo.out" }, 17.05);
+      tl.fromTo("#o-mark", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: out }, 18.2);
+      tl.fromTo("#o-logo", { rotation: -90, scale: 0.4 }, { rotation: 0, scale: 1, duration: 0.6, ease: "back.out(1.8)" }, 18.2);
+      tl.fromTo("#o-sub", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: out }, 18.55);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
