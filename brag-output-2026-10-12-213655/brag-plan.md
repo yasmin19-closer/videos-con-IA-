@@ -1,41 +1,49 @@
-# brag-plan — videos con IA (vertical)
+# brag-plan — videos con IA (vertical · Serie A 2016)
 
-Formato: vertical 1080×1920, 30 fps, 20.0 s · Tono: `default` (punchy, limpio, juguetón) · Idioma: español
+Formato: vertical 1080×1920, 30 fps, 20.0 s · Idioma: español
+Tono: **"lanzamiento falso de una Serie A de 2016"**, sobre la base `yc-parody`. Se juega totalmente en serio: una afirmación por escena, cortes secos y nada de guiños a cámara.
 
 ## Ángulo
-**"Una conversación. Un estudio. Un video."**
-Alguien que no programa pidió un estudio de motion graphics en un chat, y en la misma conversación salió su primer video. Lo que muestra el proyecto es ese recorrido, de punta a punta, contado como una conversación de móvil.
+**"Anunciamos nuestra Serie A: $0."**
+El proyecto se presenta como si fuera una startup de 2016 que acaba de levantar ronda, con su comunicado de prensa, su gráfica de tracción y su "estamos contratando". El chiste sale de la verdad del proyecto: todo el "producto" se construyó con una sola frase, "yo no programo", y la "tracción" son las skills que se instalaron de verdad en esta conversación.
 
 ## Gancho (0–2.5 s)
-Pantalla tipo chat de móvil. Se escribe tu mensaje real:
-> "Yo no programo: instala todo."
+Cabecera de comunicado de prensa con el degradado de Instagram de 2016 (violeta → rojo → naranja) y un 🚀:
+> **"Anunciamos nuestra Serie A."**
 
-Llega la respuesta al instante con un ✓ verde y el rótulo grande: **"Hecho."**
+Corte seco a la línea de abajo: **"Monto: $0."**
 
 ## Momentos que se muestran
-1. **Revisión en verde:** la salida real de `npx hyperframes doctor`, con Node.js v22.22.0, FFmpeg 6.1.1, Chrome Headless Shell y "Ready to render.", línea a línea.
-2. **24 skills apiladas:** tres tarjetas que caen una sobre otra: HyperFrames 10 · Remotion 12 · brag 2 → contador "24 skills de video".
-3. **El primer video ya existe:** el video horizontal que hicimos (`brag.mp4`) se reproduce dentro de un marco, con el rótulo "Primer video: listo."
+1. **El problema / la solución:** una slide de pitch al estilo 2016. "Problema: hacer motion graphics requería programar." → "Solución:" y aparece tu mensaje real del chat: *"yo no programo: instala todo."*
+2. **Tracción:** la clásica gráfica en forma de palo de hockey, "arriba y a la derecha". Los puntos son datos reales, en el orden en que se instalaron: 0 → **10** (HyperFrames) → **22** (+ Remotion) → **24** skills (+ brag). Debajo, "Node 22 ✓ · FFmpeg ✓ · Chrome ✓".
+3. **El producto:** tu primer video (`brag.mp4`) reproduciéndose dentro de un iPhone blanco de 2016, con el rótulo "Producto: un video. Hecho en una conversación."
 
-## Remate (16.5–20 s)
-"Y este es el segundo." → logo **videos con IA** · "Pídelo en español."
+## Remate (15.5–20 s)
+Slide de "Equipo":
+- "1 persona que no programa."
+- "0 líneas de código."
+
+Cierra con el logo **videos con IA** sobre el degradado y la línea final, también muy en serio: **"Estamos contratando."** Debajo, en pequeño: "(No.)"
 
 ## Storyboard escena por escena
 | # | Tiempo | Escena | Texto en pantalla | Movimiento / transición | Sonido |
 |---|---|---|---|---|---|
-| 1 | 0.0–2.5 | Chat de móvil: se teclea tu mensaje; llega la respuesta con ✓ | "Yo no programo: instala todo." → "Hecho." | El chat entra desde abajo; "Hecho." salta con rebote | Tecleo suave, "pop" al llegar la respuesta |
-| 2 | 2.5–6.5 | Terminal vertical con `npx hyperframes doctor` | Rótulo arriba: "Todo revisado." · líneas ✓ · "Ready to render." | La terminal sube; líneas aparecen una a una; "Ready" se pone verde | Ticks suaves, campanita en "Ready" |
-| 3 | 6.5–11.0 | Tres tarjetas apiladas | "HyperFrames 10" · "Remotion 12" · "brag 2" → "24 skills de video" | Las tarjetas caen y se apilan; el número cuenta hasta 24 | Tres "pops" ascendentes |
-| 4 | 11.0–16.5 | Marco con el primer video reproduciéndose (fragmento real de brag.mp4) | "Primer video: listo." · debajo, en pequeño: "20 s · música incluida" | El marco entra con zoom suave; el video corre dentro | Barrido de entrada |
-| 5 | 16.5–20.0 | Remate y cierre | "Y este es el segundo." → logo "videos con IA" · "Pídelo en español." | Corte limpio; logo gira y aparece | Acorde final que se apaga |
+| 1 | 0.0–2.5 | Comunicado de prensa, cabecera con degradado 2016 | "PARA PUBLICACIÓN INMEDIATA" · "Anunciamos nuestra Serie A." 🚀 → "Monto: $0." | El cohete entra de lado; "Monto: $0." aparece con corte seco | Arranque de ukelele/glockenspiel, "ding" en el $0 |
+| 2 | 2.5–7.0 | Slide de pitch blanca, diseño plano | "El problema" → "Hacer motion graphics requería programar." → "La solución" → burbuja de chat: "yo no programo: instala todo." | Cada bloque entra con un deslizamiento corto; la burbuja salta | Clic de diapositiva entre bloques |
+| 3 | 7.0–11.5 | Gráfica de tracción en palo de hockey | "Tracción" · eje: "skills instaladas" · 0 → 10 → 22 → 24 · "Node 22 ✓ FFmpeg ✓ Chrome ✓" | La línea se dibuja subiendo; cada punto hace "pop" con su número | Notas ascendentes en cada punto, aplauso corto al llegar a 24 |
+| 4 | 11.5–15.5 | iPhone blanco de 2016 con tu primer video corriendo dentro | "Producto:" · "Un video. Hecho en una conversación." | El teléfono sube con un ligero giro; corte seco al salir | Barrido suave |
+| 5 | 15.5–20.0 | Slide "Equipo" → logo final | "Equipo" · "1 persona que no programa." · "0 líneas de código." → logo "videos con IA" · "Estamos contratando." · "(No.)" | Líneas una a una; corte al logo sobre degradado; "(No.)" aparece al final, pequeño | Acorde final alegre que se apaga |
 
-Total: 2.5 + 4.0 + 4.5 + 5.5 + 3.5 = **20.0 s**
+Total: 2.5 + 4.5 + 4.5 + 4.0 + 4.5 = **20.0 s**
 
-## Identidad visual
-Mantiene la del primer video para que se vean como una serie: fondo #0D0E12, texto #F4F1EA, coral #FF5B2E, violeta #8B6CFF, verde terminal #6EE7A0. Inter Display + DejaVu Sans Mono. Todo el texto importante va en la zona central, lejos de los bordes de arriba y abajo donde Reels/TikTok ponen sus botones.
+## Identidad visual (2016)
+- **Paleta:** degradado de Instagram 2016 (#833AB4 → #FD1D1D → #FCB045) para la portada y el cierre; slides blancas (#FFFFFF) con texto casi negro (#1C1E21) y acento azul "startup" (#3B82F6) para la gráfica.
+- **Estilo:** diseño plano, esquinas redondeadas y sombras suaves, emoji 🚀.
+- **Tipografía:** Liberation Sans en negrita, con el aire de las presentaciones de la época.
+- **Formato vertical:** los textos clave van en el centro, lejos de los botones de Reels y TikTok.
 
 ## Música
-Misma base que el primer video (La menor, 112 BPM, generada aquí mismo), con la batería entrando en la escena 2.
+Base alegre "de anuncio de startup": Do mayor, 120 BPM, ukelele pulsado + glockenspiel + palmas, todo generado aquí mismo. Los efectos van en la misma tonalidad.
 
 ## Texto para publicar (borrador)
-"Pedí un estudio de motion graphics sin saber programar. Me salió el estudio, y de regalo, dos videos. Este es el segundo, hecho con /brag."
+"Anunciamos nuestra Serie A: $0. Equipo: 1 persona que no programa. Tracción: 24 skills de video. Producto: un estudio de motion graphics que se pide en español. Estamos contratando (no)."
