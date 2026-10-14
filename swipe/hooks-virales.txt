@@ -1,0 +1,40 @@
+# Hooks de ejemplo por patrón, para el nicho de ventas y objeciones.
+# Uno por línea. Prueba: python3 hookscore.py swipe/hooks-virales.txt
+# El número es el patrón de swipe/PATRONES.md.
+
+# 1 Stop Doing
+Deja de bajar el precio cuando te dicen "está caro"
+No respondas "ok, te escribo mañana"
+# 2 The List
+3 frases para cerrar cuando dicen "lo voy a pensar"
+5 objeciones que escuchas cada semana
+# 3 Nobody Tells You
+Nadie te dice esto cuando empiezas en ventas
+Nadie te enseña qué responder a "está caro"
+# 4 The Loss
+Perdí una venta de $3,000 por una sola frase
+Perdí 10 cierres seguidos por decir "lo entiendo"
+# 5 The Callout
+¿Te dijeron "lo voy a pensar"? Pregunta esto
+¿Te dicen "mándame información"? No la mandes
+# 6 The Contrarian
+"Está caro" casi nunca es por el precio
+"Lo voy a pensar" no es por el tiempo
+# 7 The Result
+Así cerré una venta que ya estaba perdida
+Así recuperé a un cliente que me dejó en visto
+# 8 The Script
+Dile esto cuando el cliente diga "está caro"
+Cuando te digan "no tengo dinero", responde así
+# 9 The Steal
+Róbate este guion para "lo voy a pensar"
+Cópiate mis 3 preguntas de cierre
+# 10 If You
+Si te dicen "lo hablo con mi pareja", haz esto
+Si vendes por WhatsApp, deja de hacer esto
+# 11 Before / After
+Antes perdía 7 de 10 ventas. Ahora cierro 6
+Hace un año no cerraba nada. Esto cambió
+# 12 The Confession
+La verdad: el cliente no te dice por qué no compra
+Confieso que perdí ventas por miedo a preguntar

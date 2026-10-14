@@ -49,9 +49,12 @@ def starts_with_any(text, words):
 # Word lists are accent-stripped and lowercase.
 YOU = ["you", "your", "you're", "yourself", "tu", "tus", "te", "ti", "usted",
        "contigo", "tienes", "quieres", "puedes", "haces", "dices", "sabes",
-       "estas", "eres", "dicen", "dijeron", "pregunta", "deja", "haz", "di"]
+       "estas", "eres", "dicen", "dijeron", "pregunta", "deja", "haz", "di",
+       "dile", "robate", "copiate", "toma", "mira", "guarda", "responde",
+       "vendes", "digan"]
 I = ["i", "i'm", "my", "me", "yo", "mi", "perdi", "aprendi", "cometi", "gane",
-     "descubri", "hice"]
+     "descubri", "hice", "cerre", "recupere", "perdia", "cerraba", "confieso",
+     "vendi", "logre", "consegui"]
 STAKES_HIGH = ["lost", "lose", "losing", "fail", "failed", "broke", "fired",
                "mistake", "costs", "cost me", "killing", "ruin", "wasted",
                "perdi", "perder", "pierdes", "fracase", "error", "errores",
