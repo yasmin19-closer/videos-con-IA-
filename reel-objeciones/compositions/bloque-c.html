@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter Display"; font-weight: 900; src: url("../assets/InterDisplay-Black.otf"); }
+        @font-face { font-family: "Inter Display"; font-weight: 700; src: url("../assets/InterDisplay-Bold.otf"); }
+        #root { position: absolute; inset: 0; font-family: "Inter Display", sans-serif; }
+        /* Palabra clave: blanca, negrita, sobre el lado que habla */
+        .clave { position: absolute; top: 985px; width: 520px; font-weight: 700; font-size: 46px;
+          line-height: 1.1; color: #fff; text-align: center; letter-spacing: -0.01em;
+          text-shadow: 0 2px 6px rgba(0,0,0,.85), 0 0 18px rgba(0,0,0,.55); }
+        /* Cabecera: Black, mayúsculas, verde / rojo con contorno blanco */
+        .cabecera { position: absolute; top: 1050px; width: 520px; display: flex; flex-direction: column;
+          align-items: center; font-weight: 900; font-size: 74px; line-height: 0.95; letter-spacing: -0.02em;
+          -webkit-text-stroke: 5px #fff; paint-order: stroke fill;
+          filter: drop-shadow(0 4px 6px rgba(0,0,0,.55)); }
+        .izq.cabecera, .izq.tarjeta-titulo { color: #12B847; }
+        .der.cabecera, .der.tarjeta-titulo { color: #E3161F; }
+        /* Iconos 3D: dos por lado en cada bloque, uno junto al otro */
+        .icono { position: absolute; top: 1275px; width: 180px; height: 180px;
+          filter: drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+        /* Tarjeta final con el perfil */
+        .tarjeta-titulo { position: absolute; top: 985px; width: 450px; display: flex; flex-direction: column;
+          align-items: center; font-weight: 900; font-size: 40px; line-height: 1.05; text-align: center;
+          -webkit-text-stroke: 4px #fff; paint-order: stroke fill; filter: drop-shadow(0 3px 5px rgba(0,0,0,.55)); }
+        .tarjeta-img { position: absolute; top: 1185px; width: 450px; border-radius: 18px;
+          box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+      </style>
+      <div id="root" data-composition-id="bloque-c" data-width="1080" data-height="1920">
+        <div id="bloque-c-cabecera-izq" class="clip cabecera izq" data-start="0" data-duration="8.99" data-track-index="1" style="left:10px"><span>COBRA</span><span>SU VALOR</span></div>
+        <div id="bloque-c-cabecera-der" class="clip cabecera der" data-start="0" data-duration="8.99" data-track-index="2" style="left:530px"><span>COBRA</span><span>SU TIEMPO</span></div>
+        <div id="clave-9" class="clip clave" data-start="0" data-duration="1.75" data-track-index="3" style="left:10px">Por resultados</div>
+        <img id="icono-9" class="clip icono" src="../assets/icons/1f4c8.png" alt="" data-start="0.893" data-duration="8.097" data-track-index="5" style="left:85px">
+        <div id="clave-10" class="clip clave" data-start="1.75" data-duration="1.44" data-track-index="4" style="left:530px">Por horas</div>
+        <img id="icono-10" class="clip icono" src="../assets/icons/23f3.png" alt="" data-start="2.472" data-duration="6.518" data-track-index="6" style="left:605px">
+        <div id="clave-11" class="clip clave" data-start="3.19" data-duration="2.8" data-track-index="3" style="left:10px">Subo mi valor</div>
+        <img id="icono-11" class="clip icono" src="../assets/icons/1f680.png" alt="" data-start="4.66" data-duration="4.33" data-track-index="5" style="left:275px">
+        <div id="clave-12" class="clip clave" data-start="5.99" data-duration="3" data-track-index="4" style="left:530px">Espero estar lista</div>
+        <img id="icono-12" class="clip icono" src="../assets/icons/1f40c.png" alt="" data-start="7.57" data-duration="1.42" data-track-index="6" style="left:795px">
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#clave-9", {scale: 0.9}, {scale: 1, duration: 0.14, ease: "back.out(3)"}, 0);
+        tl.fromTo("#icono-9", {scale: 0}, {scale: 1, duration: 0.24, ease: "back.out(2.6)"}, 0.893);
+        tl.fromTo("#clave-10", {scale: 0.9}, {scale: 1, duration: 0.14, ease: "back.out(3)"}, 1.75);
+        tl.fromTo("#icono-10", {scale: 0}, {scale: 1, duration: 0.24, ease: "back.out(2.6)"}, 2.472);
+        tl.fromTo("#clave-11", {scale: 0.9}, {scale: 1, duration: 0.14, ease: "back.out(3)"}, 3.19);
+        tl.fromTo("#icono-11", {scale: 0}, {scale: 1, duration: 0.24, ease: "back.out(2.6)"}, 4.66);
+        tl.fromTo("#clave-12", {scale: 0.9}, {scale: 1, duration: 0.14, ease: "back.out(3)"}, 5.99);
+        tl.fromTo("#icono-12", {scale: 0}, {scale: 1, duration: 0.24, ease: "back.out(2.6)"}, 7.57);
+        window.__timelines["bloque-c"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

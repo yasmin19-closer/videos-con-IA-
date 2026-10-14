@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "Inter Display"; font-weight: 900; src: url("../assets/InterDisplay-Black.otf"); }
+        @font-face { font-family: "Inter Display"; font-weight: 700; src: url("../assets/InterDisplay-Bold.otf"); }
+        #root { position: absolute; inset: 0; font-family: "Inter Display", sans-serif; }
+        /* Palabra clave: blanca, negrita, sobre el lado que habla */
+        .clave { position: absolute; top: 985px; width: 520px; font-weight: 700; font-size: 46px;
+          line-height: 1.1; color: #fff; text-align: center; letter-spacing: -0.01em;
+          text-shadow: 0 2px 6px rgba(0,0,0,.85), 0 0 18px rgba(0,0,0,.55); }
+        /* Cabecera: Black, mayúsculas, verde / rojo con contorno blanco */
+        .cabecera { position: absolute; top: 1050px; width: 520px; display: flex; flex-direction: column;
+          align-items: center; font-weight: 900; font-size: 74px; line-height: 0.95; letter-spacing: -0.02em;
+          -webkit-text-stroke: 5px #fff; paint-order: stroke fill;
+          filter: drop-shadow(0 4px 6px rgba(0,0,0,.55)); }
+        .izq.cabecera, .izq.tarjeta-titulo { color: #12B847; }
+        .der.cabecera, .der.tarjeta-titulo { color: #E3161F; }
+        /* Iconos 3D: dos por lado en cada bloque, uno junto al otro */
+        .icono { position: absolute; top: 1275px; width: 180px; height: 180px;
+          filter: drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+        /* Tarjeta final con el perfil */
+        .tarjeta-titulo { position: absolute; top: 985px; width: 450px; display: flex; flex-direction: column;
+          align-items: center; font-weight: 900; font-size: 40px; line-height: 1.05; text-align: center;
+          -webkit-text-stroke: 4px #fff; paint-order: stroke fill; filter: drop-shadow(0 3px 5px rgba(0,0,0,.55)); }
+        .tarjeta-img { position: absolute; top: 1185px; width: 450px; border-radius: 18px;
+          box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+      </style>
+      <div id="root" data-composition-id="cierre" data-width="1080" data-height="1920">
+        <div id="titulo-13" class="clip tarjeta-titulo izq" data-start="0" data-duration="4.98" data-track-index="1" style="left:45px"><span>Yo sí sigo a</span><span>Yasmin Álvarez Closer</span></div>
+        <img id="perfil-13" class="clip tarjeta-img" src="../assets/perfil.jpg" alt="Perfil de Yasmin Álvarez Closer" data-start="0" data-duration="4.98" data-track-index="2" style="left:45px">
+        <div id="titulo-14" class="clip tarjeta-titulo der" data-start="2.65" data-duration="2.33" data-track-index="3" style="left:565px"><span>No sigo a</span><span>Yasmin Álvarez Closer</span></div>
+        <img id="perfil-14" class="clip tarjeta-img" src="../assets/perfil.jpg" alt="Perfil de Yasmin Álvarez Closer" data-start="2.65" data-duration="2.33" data-track-index="4" style="left:565px">
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        tl.fromTo("#titulo-13", {scale: 0.55, filter: "blur(8px)"}, {scale: 1, filter: "blur(0px)", duration: 0.22, ease: "back.out(2)"}, 0);
+        tl.fromTo("#perfil-13", {scale: 0.55, filter: "blur(8px)"}, {scale: 1, filter: "blur(0px)", duration: 0.22, ease: "back.out(2)"}, 0);
+        tl.fromTo("#titulo-14", {scale: 0.55, filter: "blur(8px)"}, {scale: 1, filter: "blur(0px)", duration: 0.22, ease: "back.out(2)"}, 2.65);
+        tl.fromTo("#perfil-14", {scale: 0.55, filter: "blur(8px)"}, {scale: 1, filter: "blur(0px)", duration: 0.22, ease: "back.out(2)"}, 2.65);
+        window.__timelines["cierre"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

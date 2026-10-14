@@ -1,0 +1,6 @@
+.hyperframes/artifacts/
+.hyperframes/preview/
+.hyperframes/render-outputs.json
+.hyperframes/snapshots/
+renders/
+assets/work/
