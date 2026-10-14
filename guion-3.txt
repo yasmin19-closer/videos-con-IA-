@@ -1,0 +1,6 @@
+# Video 3 – objeción: "lo consulto con mi pareja". Ejecuta: python3 beats.py guion-3.txt --target 30
+HOOK: Deja de aceptar "lo hablo con mi esposo".
+PROBLEMA: Casi nunca es la pareja. Es una duda que el cliente no se atreve a decirte.
+GIRO: Respóndele: "Claro, es una decisión de los dos. Si fuera solo tuya, ¿lo harías?"
+PRUEBA: Si dice que sí, agendas una llamada con los dos. Si dice que no, ya salió la objeción real.
+[CTA] Comenta "PAREJA" y te mando qué responder en cada caso.
