@@ -4,7 +4,8 @@
 Usage:
     python3 swipe.py swipe/reels.csv              # outliers first
     python3 swipe.py swipe/reels.csv --min 0      # show every reel
-    python3 swipe.py --patterns                   # list the hook types
+    python3 swipe.py --patterns                   # the 26 hook formulas
+    python3 swipe.py --examples | python3 ../ig-reel/hookscore.py -
 
 CSV columns (header row required):
     account,views,hook[,median][,url]
@@ -14,7 +15,8 @@ taken from the other reels of that account in the file (needs 3 or more).
 
 Views alone lie: a big account's average reel beats a small account's best.
 The multiple (views / account median) shows which hooks actually broke out.
-The full library with templates lives in swipe/PATRONES.md.
+Formulas (template, example, on-screen line, purpose, how it gets ruined,
+match regex) live in skills/ig-reel/hooks.json.
 """
 import argparse
 import csv
@@ -22,51 +24,26 @@ import re
 import statistics
 import sys
 
-from hookscore import norm, score_hook
+import json
+import os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+REEL = os.path.join(HERE, "..", "ig-reel")
+sys.path.insert(0, REEL)
+from hookscore import norm, score_hook  # noqa: E402
 
 WIDTH = 78
 
-# (number, name, pattern on accent-stripped lowercase text).
-# Listed in matching priority, most specific first; numbers are stable ids.
-PATTERNS = [
-    (9, "The Steal",
-     r"^(steal|copy|grab|take) (this|my)\b|^(robate|roba|copia|copiate|toma|quedate con) "
-     r"(este|esta|esto|mi|mis)\b"),
-    (3, "Nobody Tells You",
-     r"\b(nobody|no one) (tells|told|talks|teaches)\b|\bnadie te (dice|cuenta|ensena|habla|explica)\b"),
-    (4, "The Loss",
-     r"^(i )?(lost|wasted|blew)\b|\bcost me\b|^(perdi|desperdicie|tire)\b|\bme costo\b"),
-    (12, "The Confession",
-     r"^(the truth|confession|i'?ll admit|what no \w+ (will )?admit)|^(la verdad|confieso|"
-     r"lo que (ningun|nadie)|voy a ser honesta?)\b|nobody wants to admit|nadie quiere admitir"),
-    (11, "Before / After",
-     r"\bused to\b.{0,60}\bnow\b|\bantes\b.{0,60}\bahora\b|^hace (un ano|\d+ (meses|anos))"),
-    (8, "The Script",
-     r"^(say this|use this line|di esto|dile|respondele|responde (esto|asi))\b|"
-     r"^(when|cuando) (they|a client|the client|te digan|el cliente)\b.{0,40}\b(say|di|responde)"),
-    (1, "Stop Doing",
-     r"^(stop|quit|don'?t|never|deja de|dejen de|no (digas|hagas|aceptes|respondas|"
-     r"mandes|bajes)|nunca)\b"),
-    (5, "The Callout",
-     r"^(te (dijeron|dicen|ha pasado|pasa)|alguna vez|did (a|your) client|has a client|ever had)\b"),
-    (10, "If You",
-     r"^(if you|if your|si (te|tu|eres|vendes|estas|tienes|el cliente))\b"),
-    (6, "The Contrarian",
-     r"\b(is a lie|is a myth|is wrong|is dead|isn'?t about)\b|\b(casi nunca es|no es por|"
-     r"es mentira|es un mito|esta muerto|no se trata de)\b"),
-    (2, "The List",
-     r"^(\d+|three|four|five|seven|ten|tres|cuatro|cinco|siete|diez) [a-z]"),
-    (7, "The Result",
-     r"^(how i|this is how i|i (closed|made|sold|went|booked))\b|^(como|asi) "
-     r"(cerre|vendi|pase|consegui|logre|recupere)\b|^(cerre|vendi|recupere)\b"),
-]
+with open(os.path.join(REEL, "hooks.json"), encoding="utf-8") as fh:
+    FORMULAS = json.load(fh)["formulas"]  # list order = match priority
 
 
 def classify(hook):
-    t = norm(hook).strip(" \"'“«")
-    for num, name, pat in PATTERNS:
-        if re.search(pat, t):
-            return num, name
+    raw = hook.strip().lower()
+    t = norm(hook).strip(" \"'\u201c\u00ab")
+    for f in FORMULAS:
+        if re.search(f["match"], t) or re.search(f["match"], raw):
+            return f["id"], f["name"]
     return None, "unclassified"
 
 
@@ -103,16 +80,22 @@ def main():
     ap.add_argument("--min", type=float, default=1.0,
                     help="hide reels below this multiple (default 1.0)")
     ap.add_argument("--wpm", type=float, default=160)
-    ap.add_argument("--patterns", action="store_true", help="list the hook types")
+    ap.add_argument("--patterns", action="store_true", help="list the hook formulas")
+    ap.add_argument("--examples", action="store_true",
+                    help="print one example hook per formula (pipe into hookscore)")
     args = ap.parse_args()
 
     if args.patterns:
-        for num, name, _ in sorted(PATTERNS):
-            print(f"  #{num:<3}{name}")
-        print("\nTemplates and examples: swipe/PATRONES.md")
+        for f in sorted(FORMULAS, key=lambda f: f["id"]):
+            print(f"  #{f['id']:<3}{f['name']:<23}{f['template']}")
+            print(f"{'':28}ej: {f['example']}")
+        return
+    if args.examples:
+        for f in sorted(FORMULAS, key=lambda f: f["id"]):
+            print(f["example"])
         return
     if not args.file:
-        ap.error("give a reels CSV, or --patterns")
+        ap.error("give a reels CSV, or --patterns / --examples")
 
     reels = load(args.file)
     if not reels:

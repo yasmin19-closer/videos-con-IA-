@@ -1,0 +1,265 @@
+{
+  "_doc": "26 hook formulas. Array order is match priority (most specific first); ids are stable. `match` runs on lowercase, accent-stripped text without ¿¡; The Quote Open is tested on the raw opening quote.",
+  "formulas": [
+    {
+      "id": 9,
+      "name": "The Steal",
+      "template": "Róbate este ___ para \"___\"",
+      "example": "Róbate este guion para \"lo voy a pensar\"",
+      "on_screen": "GUION PARA ROBAR",
+      "for": "Guardados y envíos: promete algo listo para copiar.",
+      "ruined_by": "Que lo que regalas no se pueda copiar tal cual (consejos vagos en vez de las palabras exactas).",
+      "match": "^(steal|copy|grab|take) (this|my)\\b|^(robate|roba|copia|copiate|toma|quedate con) (este|esta|esto|mi|mis)\\b"
+    },
+    {
+      "id": 3,
+      "name": "Nobody Tells You",
+      "template": "Nadie te dice esto cuando ___",
+      "example": "Nadie te enseña qué responder a \"está caro\"",
+      "on_screen": "NADIE TE LO DICE",
+      "for": "Retención: abre una brecha de curiosidad y te pone del lado del espectador.",
+      "ruined_by": "Revelar algo que todos ya saben. La promesa de secreto se rompe y se van.",
+      "match": "\\b(nobody|no one) (tells|told|talks|teaches)\\b|\\bnadie te (dice|dijo|cuenta|ensena|habla|explica)\\b"
+    },
+    {
+      "id": 4,
+      "name": "The Loss",
+      "template": "Perdí ___ por ___",
+      "example": "Perdí una venta de $3,000 por una sola frase",
+      "on_screen": "-$3,000 POR UNA FRASE",
+      "for": "Retención y comentarios: la pérdida pesa más que la ganancia.",
+      "ruined_by": "Una cifra inventada o redonda que no suena real, o no decir qué la causó.",
+      "match": "^(i )?(lost|wasted|blew)\\b|\\bcost me\\b|^(perdi|desperdicie|tire)\\b|\\bme costo\\b"
+    },
+    {
+      "id": 25,
+      "name": "The Price Tag",
+      "template": "Cada \"___\" te cuesta ___",
+      "example": "Cada \"lo voy a pensar\" te cuesta una venta",
+      "on_screen": "LO QUE TE CUESTA",
+      "for": "Retención: pone precio a un hábito que el espectador no veía como caro.",
+      "ruined_by": "Un costo exagerado que nadie se cree.",
+      "match": "\\b(te cuesta|te esta costando|costs you|is costing you)\\b"
+    },
+    {
+      "id": 12,
+      "name": "The Confession",
+      "template": "La verdad: ___ / Confieso que ___",
+      "example": "Confieso que perdí ventas por miedo a preguntar",
+      "on_screen": "CONFESIÓN",
+      "for": "Confianza y comentarios: la vulnerabilidad baja la guardia.",
+      "ruined_by": "Confesar algo que en realidad es presumir (\"confieso que trabajo demasiado\").",
+      "match": "^(the truth|confession|i'?ll admit)\\b|^(la verdad|confieso|voy a ser honest[ao])\\b|nobody wants to admit|nadie quiere admitir|lo que (ningun|nadie)"
+    },
+    {
+      "id": 16,
+      "name": "The Unpopular Opinion",
+      "template": "Opinión impopular: ___",
+      "example": "Opinión impopular: bajar el precio no cierra ventas",
+      "on_screen": "OPINIÓN IMPOPULAR",
+      "for": "Comentarios: invita a discutir.",
+      "ruined_by": "Una opinión que en realidad todos comparten. Sin polémica, no hay comentarios.",
+      "match": "^(unpopular opinion|hot take|opinion impopular|opinion polemica)\\b"
+    },
+    {
+      "id": 13,
+      "name": "POV",
+      "template": "POV: ___ te dice \"___\"",
+      "example": "POV: el cliente te dice \"lo voy a pensar\"",
+      "on_screen": "POV",
+      "for": "Alcance: el espectador se mete en la escena en el primer segundo.",
+      "ruined_by": "Un POV sin actuación: si solo hablas a cámara, no es POV.",
+      "match": "^pov\\b"
+    },
+    {
+      "id": 18,
+      "name": "The Roleplay",
+      "template": "Cliente: \"___\". Yo: ___",
+      "example": "Cliente: \"está caro\". Yo: ¿comparado con qué?",
+      "on_screen": "CLIENTE vs YO",
+      "for": "Guardados: muestra el intercambio exacto, listo para copiar.",
+      "ruined_by": "Que la respuesta del \"yo\" sea larga. Tiene que caber en una línea.",
+      "match": "^(cliente|client|prospecto|customer)\\s*:"
+    },
+    {
+      "id": 21,
+      "name": "The Versus",
+      "template": "___ novato vs ___ experto",
+      "example": "Closer novato vs closer experto ante \"está caro\"",
+      "on_screen": "NOVATO vs EXPERTO",
+      "for": "Retención: el espectador quiere saber de qué lado está.",
+      "ruined_by": "Que la diferencia entre los dos lados sea mínima.",
+      "match": "\\bvs\\.?\\b|\\bversus\\b"
+    },
+    {
+      "id": 17,
+      "name": "The Time Box",
+      "template": "En ___ segundos te enseño ___",
+      "example": "En 20 segundos te enseño a responder \"está caro\"",
+      "on_screen": "20 SEGUNDOS",
+      "for": "Retención: promete un final cercano y concreto.",
+      "ruined_by": "Pasarte del tiempo prometido. El espectador lo nota.",
+      "match": "^(en|in) \\d+ (segundos|seconds|minutos|minutes)\\b"
+    },
+    {
+      "id": 26,
+      "name": "The Rule",
+      "template": "Regla #___ de ___: ___",
+      "example": "Regla #1 de cierre: nunca bajes el precio primero",
+      "on_screen": "REGLA #1",
+      "for": "Guardados y serie: se presta a capítulos.",
+      "ruined_by": "Una regla sin excepción explicada; suena a dogma.",
+      "match": "^(regla|rule)\\b"
+    },
+    {
+      "id": 15,
+      "name": "The Worst / Best",
+      "template": "La peor respuesta a \"___\"",
+      "example": "La peor respuesta a \"está caro\"",
+      "on_screen": "LA PEOR RESPUESTA",
+      "for": "Comentarios: la gente confiesa que la usaba.",
+      "ruined_by": "No dar la buena respuesta después de la mala.",
+      "match": "^(la peor|el peor|lo peor|la mejor|el mejor|the worst|the best)\\b"
+    },
+    {
+      "id": 11,
+      "name": "Before / After",
+      "template": "Antes ___. Ahora ___",
+      "example": "Antes perdía 7 de 10 ventas. Ahora cierro 6",
+      "on_screen": "7/10 → 6/10",
+      "for": "Retención: el espectador quiere saber qué pasó en medio.",
+      "ruined_by": "Números que no son tuyos, o un \"después\" sin explicar qué cambió.",
+      "match": "\\bused to\\b.{0,60}\\bnow\\b|\\bantes\\b.{0,60}\\bahora\\b|^hace (un ano|\\d+ (meses|anos))"
+    },
+    {
+      "id": 22,
+      "name": "The Story",
+      "template": "Ayer un cliente me dijo \"___\"",
+      "example": "Ayer un cliente me dijo \"no tengo dinero\" y compró",
+      "on_screen": "AYER UN CLIENTE...",
+      "for": "Retención: una historia abierta se ve hasta el final.",
+      "ruined_by": "Tardar en llegar al conflicto. La frase del cliente va en la primera línea.",
+      "match": "^(ayer|anoche|la semana pasada|el otro dia|hoy un cliente|yesterday|last week)\\b"
+    },
+    {
+      "id": 8,
+      "name": "The Script",
+      "template": "Dile esto cuando el cliente diga \"___\"",
+      "example": "Cuando te digan \"no tengo dinero\", responde así",
+      "on_screen": "QUÉ RESPONDER",
+      "for": "Guardados: la gente lo busca antes de una llamada.",
+      "ruined_by": "Prometer palabras exactas y dar una idea general.",
+      "match": "^(say this|use this line|di esto|dile|respondele|responde (esto|asi))\\b|^(when|cuando) (they|a client|the client|te digan|el cliente)\\b.{0,40}\\b(say|di|dile|responde)"
+    },
+    {
+      "id": 1,
+      "name": "Stop Doing",
+      "template": "Deja de ___ cuando te dicen \"___\"",
+      "example": "Deja de bajar el precio cuando te dicen \"está caro\"",
+      "on_screen": "DEJA DE HACER ESTO",
+      "for": "Retención: duele un poco y quieren saber qué hacer en su lugar.",
+      "ruined_by": "Regañar sin dar la alternativa en los siguientes 5 segundos.",
+      "match": "^(stop|quit|don'?t|never|deja de|dejen de|no (digas|hagas|aceptes|respondas|mandes|bajes)|nunca)\\b"
+    },
+    {
+      "id": 14,
+      "name": "The Warning",
+      "template": "Cuidado si ___",
+      "example": "Cuidado si el cliente te pide \"mándame la propuesta\"",
+      "on_screen": "CUIDADO",
+      "for": "Retención: activa la alerta antes que la curiosidad.",
+      "ruined_by": "Alarmar por algo trivial. Pierdes credibilidad para el siguiente video.",
+      "match": "^(cuidado|ojo|alerta|warning|careful|watch out)\\b"
+    },
+    {
+      "id": 20,
+      "name": "Try This",
+      "template": "Prueba esto en tu próxima ___",
+      "example": "Prueba esto en tu próxima llamada de cierre",
+      "on_screen": "PRUÉBALO HOY",
+      "for": "Comentarios: la gente vuelve a contar si le funcionó.",
+      "ruined_by": "Una prueba que no se puede hacer hoy mismo.",
+      "match": "^(prueba|try this|try asking|haz esta prueba)\\b"
+    },
+    {
+      "id": 5,
+      "name": "The Callout",
+      "template": "¿Te dijeron \"___\"? ___",
+      "example": "¿Te dicen \"mándame información\"? No la mandes",
+      "on_screen": "¿TE DIJERON ESTO?",
+      "for": "Alcance: quien vivió la escena esta semana se queda.",
+      "ruined_by": "Una situación tan rara que casi nadie la vivió.",
+      "match": "^(te (dijeron|dicen|ha pasado|pasa)|alguna vez|did (a|your) client|has a client|ever had)\\b"
+    },
+    {
+      "id": 23,
+      "name": "The Why",
+      "template": "¿Por qué el cliente dice \"___\"?",
+      "example": "Por qué el cliente dice \"lo voy a pensar\" (y no es por tiempo)",
+      "on_screen": "¿POR QUÉ?",
+      "for": "Retención: una pregunta que el espectador también se hace.",
+      "ruined_by": "Responder la pregunta en el mismo hook. No queda nada por ver.",
+      "match": "^(por que|why)\\b"
+    },
+    {
+      "id": 10,
+      "name": "If You",
+      "template": "Si te dicen \"___\", haz esto",
+      "example": "Si vendes por WhatsApp, deja de hacer esto",
+      "on_screen": "SI VENDES POR WHATSAPP",
+      "for": "Alcance: filtra a tu audiencia y le enseña al algoritmo a quién mostrarte.",
+      "ruined_by": "Un filtro tan amplio que no filtra a nadie (\"si quieres vender más\").",
+      "match": "^(if you|if your|si (te|tu|eres|vendes|estas|tienes|el cliente))\\b"
+    },
+    {
+      "id": 24,
+      "name": "The Insider",
+      "template": "Esto lo hacen los ___ que más ___",
+      "example": "Esto hacen los closers que más venden con \"está caro\"",
+      "on_screen": "LO QUE HACEN LOS MEJORES",
+      "for": "Guardados: promete el método de los que ya llegaron.",
+      "ruined_by": "No decir quiénes son ni por qué saberlo te da autoridad.",
+      "match": "\\blos (\\w+ )?que mas (venden|cierran|ganan|facturan)\\b|\\b(los mejores closers|top closers|the best closers|top performers)\\b"
+    },
+    {
+      "id": 6,
+      "name": "The Contrarian",
+      "template": "\"___\" casi nunca es por ___",
+      "example": "\"Está caro\" casi nunca es por el precio",
+      "on_screen": "NO ES EL PRECIO",
+      "for": "Comentarios y retención: contradice lo que todos creen.",
+      "ruined_by": "No demostrarlo rápido. Sin prueba en 10 segundos, suena a clickbait.",
+      "match": "\\b(is a lie|is a myth|is wrong|is dead|isn'?t about)\\b|\\b(casi nunca es|no es por|es mentira|es un mito|esta muerto|no se trata de)\\b"
+    },
+    {
+      "id": 2,
+      "name": "The List",
+      "template": "___ frases para cuando dicen \"___\"",
+      "example": "3 frases para cerrar cuando dicen \"lo voy a pensar\"",
+      "on_screen": "3 FRASES",
+      "for": "Retención: el espectador cuenta mientras mira.",
+      "ruined_by": "Prometer 5 y que el video dure para 2; o un número tan grande que asusta.",
+      "match": "^(\\d+|three|four|five|seven|ten|tres|cuatro|cinco|siete|diez) [a-z]"
+    },
+    {
+      "id": 7,
+      "name": "The Result",
+      "template": "Así ___ (con un número)",
+      "example": "Así cerré una venta de $2,000 que ya estaba perdida",
+      "on_screen": "VENTA RECUPERADA",
+      "for": "Retención: muestra el final primero y promete el cómo.",
+      "ruined_by": "Quitar el número. Sin cifra, el resultado no se siente.",
+      "match": "^(how i|this is how i|i (closed|made|sold|went|booked))\\b|^(como|asi) (cerre|vendi|pase|consegui|logre|recupere)\\b|^(cerre|vendi|recupere)\\b"
+    },
+    {
+      "id": 19,
+      "name": "The Quote Open",
+      "template": "\"___.\" (la frase del cliente, tal cual)",
+      "example": "\"No tengo dinero.\" Y luego compró el plan más caro.",
+      "on_screen": "\"NO TENGO DINERO\"",
+      "for": "Alcance: la frase exacta del cliente funciona como un callout sin pregunta.",
+      "ruined_by": "Una cita que no suena a cliente real.",
+      "match": "^[\\\"“«]"
+    }
+  ]
+}

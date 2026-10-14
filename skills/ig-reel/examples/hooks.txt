@@ -1,4 +1,4 @@
-# Un hook por línea. Ejecuta: python3 hookscore.py hooks.txt
+# Un hook por línea. Ejecuta: python3 skills/ig-reel/hookscore.py skills/ig-reel/examples/hooks.txt
 Hola a todos, hoy les voy a hablar de cómo manejar objeciones de precio en ventas
 ¿Te dijeron "lo voy a pensar"? Esto es lo que nunca debes responder
 Deja de bajar el precio cuando te dicen "está caro"

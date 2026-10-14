@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Strip the AI-writing tics from a draft that can be fixed safely.
+"""Clean the AI-writing tics out of a draft in three passes.
 
 Usage:
     python3 humanize.py draft.txt                  # print the clean text
@@ -7,71 +7,91 @@ Usage:
     python3 humanize.py draft.txt -o after.txt     # save it, then:
     python3 detect.py draft.txt after.txt          # prove the delta
 
-Fixes: stock phrases with a plain equivalent ("es importante destacar que",
-"utilize"), em dashes, "Además," / "Moreover," sentence openers, doubled
-punctuation. What has no safe automatic fix (sentence rhythm, "no es X, es Y"
-formulas, flag-only phrases like "al siguiente nivel") is listed under LEFT
-FOR YOU: rewrite those in your own words.
+Passes, all driven by slop.json:
+    1 INVISIBLES  strip zero-width and hidden characters, normalise odd spaces
+                  (emoji sequences such as family or flag emoji stay intact)
+    2 TERMS       replace or delete lexicon phrases that have a plain version
+    3 TELLS       fix the structural tics that have a safe fix (em dashes,
+                  "Además," openers, doubled "!!", markdown bold)
+
+Anything without a safe automatic fix (sentence rhythm, "no es X, es Y",
+flag-only phrases like "al siguiente nivel") is listed under LEFT FOR YOU.
+Rewrite those in your own words; templates/voice.md says what yours sound like.
 """
 import argparse
 import re
-import sys
 
-from detect import DASH, FORMULAS, STOCK, TRANSITION, WIDTH, analyze, read
+from detect import (TELLS, TERMS, WIDTH, analyze, invisible_hits, read,
+                    tell_hits, INVISIBLE)
 
-MARK = "\x00"  # where a removal left a sentence without its first word
+MARK = "\x00"  # where a deletion left a sentence without its first word
 
 
 def at_sentence_start(text, pos):
     before = text[:pos].rstrip(" \t")
-    return not before or before[-1] in ".!?\n…\"“«¿¡"
+    return not before or before[-1] in ".!?\n…\"“«¿¡:"
+
+
+def line_of(text, pos):
+    return text.count("\n", 0, pos) + 1
+
+
+def pass_invisibles(text, log):
+    replace = {name: repl for name, _, repl, _ in INVISIBLE}
+    # Right to left so earlier offsets stay valid.
+    for name, m in sorted(invisible_hits(text), key=lambda h: -h[1].start()):
+        new = replace[name]
+        log.append((1, line_of(text, m.start()), f"{len(m.group())}x {name}", new))
+        text = text[:m.start()] + new + text[m.end():]
+    return text
+
+
+def sub_logged(text, rx, repl, log, pass_no):
+    def sub(m):
+        new = m.expand(repl) if "\\" in repl else repl
+        log.append((pass_no, line_of(text, m.start()), m.group(), new))
+        if new == "" and at_sentence_start(text, m.start()):
+            return MARK
+        if new and m.group()[:1].isupper():
+            return new[:1].upper() + new[1:]
+        return new
+    return rx.sub(sub, text)
 
 
 def humanize(text):
-    changes = []
-
-    def apply(pattern, repl, flags=re.I):
-        nonlocal text
-
-        def sub(m):
-            new = repl(m) if callable(repl) else repl
-            line = text.count("\n", 0, m.start()) + 1
-            changes.append((line, m.group(), new))
-            if new == "" and at_sentence_start(text, m.start()):
-                return MARK
-            if new and m.group()[:1].isupper():
-                return new[:1].upper() + new[1:]
-            return new
-
-        text = re.sub(pattern, sub, text, flags=flags)
-
-    for pat, repl in STOCK:
+    log = []
+    text = pass_invisibles(text, log)
+    for _, rx, repl in TERMS:
         if repl is not None:
-            apply(pat, repl)
-    apply(TRANSITION, "", flags=0)
-    apply(DASH, ", ", flags=0)
-    apply(r"([!?])\1+", lambda m: m.group(1), flags=0)
+            text = sub_logged(text, rx, repl, log, 2)
+    for t in TELLS:
+        if t["fix"] is not None and len(t["rx"].findall(text)) >= t["min_count"]:
+            text = sub_logged(text, t["rx"], t["fix"], log, 3)
 
     text = re.sub(MARK + r"(\s*)(\w)", lambda m: m.group(1) + m.group(2).upper(), text)
     text = text.replace(MARK, "")
-    text = re.sub(r"(?<=\S) {2,}", " ", text)
-    text = re.sub(r" +([,.;:!?])", r"\1", text)
+    text = re.sub(r"(?<=\S)[ \t]{2,}", " ", text)
+    text = re.sub(r"[ \t]+([,.;:!?])", r"\1", text)
     text = re.sub(r",\s*([.!?])", r"\1", text)
     text = re.sub(r",,+", ",", text)
-    return text, changes
+    return text, log
 
 
 def left_for_you(text):
     items = []
-    for pat, repl in STOCK:
+    for term, rx, repl in TERMS:
         if repl is None:
-            items += [f'phrase "{m.group().strip()}"' for m in re.finditer(pat, text, re.I)]
-    for pat in FORMULAS:
-        items += [f'formula "{m.group()[:40]}"' for m in re.finditer(pat, text, re.I)]
-    rhythm = next(c for c in analyze(text)["checks"] if c[0] == "RHYTHM")
-    if rhythm[1] >= 25:
-        items.append(f"rhythm: {rhythm[2]}. Break one long sentence, "
-                     "merge two short ones")
+            items += [f'term "{m.group()}"' for m in rx.finditer(text)]
+    for t, found in tell_hits(text):
+        if t["fix"] is None:
+            sample = found[0].group().replace("\n", " ")[:40]
+            more = f" (+{len(found) - 1} more)" if len(found) > 1 else ""
+            items.append(f'{t["name"].lower()}: "{sample}"{more}. {t["note"]}')
+    for name, score, detail in analyze(text)["checks"]:
+        if name in ("RHYTHM", "REPETITION") and score >= 25:
+            tip = ("break one long sentence, merge two short ones" if name == "RHYTHM"
+                   else "start a couple of those sentences differently")
+            items.append(f"{name.lower()}: {detail}. {tip}")
     return items
 
 
@@ -83,19 +103,22 @@ def main():
     args = ap.parse_args()
 
     before = read(args.file)
-    after, changes = humanize(before)
+    after, log = humanize(before)
 
     if args.report:
         b, a = analyze(before)["score"], analyze(after)["score"]
-        print(f"HUMANIZE  ·  {args.file}  ·  {len(changes)} changes  "
+        print(f"HUMANIZE  ·  {args.file}  ·  {len(log)} changes  "
               f"·  score {b} -> {a}")
         print("=" * WIDTH)
-        for line, old, new in sorted(changes, key=lambda c: c[0]):
-            old_s = old.replace("\n", " ").strip() or old
-            new_s = f'"{new}"' if new.strip() else "(removed)"
-            print(f"  L{line:<4}\"{old_s}\"  ->  {new_s}")
-        if not changes:
-            print("  nothing to fix automatically")
+        for no, name in ((1, "INVISIBLES"), (2, "TERMS"), (3, "TELLS")):
+            entries = sorted((e for e in log if e[0] == no), key=lambda e: e[1])
+            print(f"  PASS {no}  {name:<12}{len(entries)} change{'s' if len(entries) != 1 else ''}")
+            for _, line, old, new in entries:
+                old_s = old.replace("\n", " ").strip() or repr(old)
+                new_s = (f'"{new}"' if new.strip() else
+                         "(space)" if new == " " else "(newline)" if new == "\n" else "(removed)")
+                print(f"    L{line:<4}\"{old_s}\"  ->  {new_s}" if no > 1 else
+                      f"    L{line:<4}{old_s}  ->  {new_s}")
         left = left_for_you(after)
         if left:
             print("-" * WIDTH)

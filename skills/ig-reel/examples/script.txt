@@ -1,4 +1,4 @@
-# Una línea = un beat. Ejecuta: python3 beats.py script.txt --target 30
+# Una línea = un beat. Ejecuta: python3 skills/ig-reel/beats.py skills/ig-reel/examples/script.txt --target 30
 HOOK: ¿Te dijeron "lo voy a pensar"? No respondas "ok, te escribo mañana".
 PROBLEMA: Ese "lo voy a pensar" casi nunca es tiempo. Es una duda que no te dijeron.
 GIRO: Así que pregúntale: "Perfecto. ¿Qué parte quieres pensar, el precio o si esto te funciona?"

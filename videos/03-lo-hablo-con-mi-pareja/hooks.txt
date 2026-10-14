@@ -1,3 +1,4 @@
+# Ejecuta: python3 skills/ig-reel/hookscore.py videos/03-lo-hablo-con-mi-pareja/hooks.txt
 # Video 3 – objeción: "lo tengo que hablar con mi pareja"
 ¿Te dijeron "lo hablo con mi esposa"? No los dejes ir así
 "Lo hablo con mi pareja" casi nunca es por la pareja

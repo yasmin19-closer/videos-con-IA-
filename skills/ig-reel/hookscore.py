@@ -5,17 +5,16 @@ Usage:
     python3 hookscore.py hooks.txt            # one hook per line
     python3 hookscore.py hooks.txt --top 5
     python3 hookscore.py hooks.txt -v         # show every dimension score
-    python3 hookscore.py hooks.txt --wpm 150  # speaking rate for BREVITY
+    python3 hookscore.py hooks.txt --wpm 150  # speaking rate (FRONTLOAD timing)
 
 Blank lines and lines starting with '#' are ignored. Works with Spanish and
-English hooks. Each hook is scored 0-100 on six dimensions:
+English hooks. Each hook is scored 0-100 on five properties:
 
-    FRONTLOAD    the first words carry the payload, not a warm-up
+    FRONTLOAD    the payload comes first and lands in about 3 seconds
     STAKES       something to lose, fear, or fix
     CURIOSITY    an open loop the viewer needs closed
     SPECIFICITY  numbers, money, quoted words instead of vague claims
     ADDRESS      talks to "you" (a first-person story is next best)
-    BREVITY      can be said in about 3 seconds
 
 A dealbreaker (greeting, "stop scrolling", preamble...) multiplies the total
 down no matter how good the rest is. The score is a heuristic, not a
@@ -28,8 +27,8 @@ import textwrap
 import unicodedata
 
 WIDTH = 78
-WEIGHTS = {"FRONTLOAD": 0.25, "STAKES": 0.20, "CURIOSITY": 0.15,
-           "SPECIFICITY": 0.15, "ADDRESS": 0.15, "BREVITY": 0.10}
+WEIGHTS = {"FRONTLOAD": 0.30, "STAKES": 0.20, "CURIOSITY": 0.20,
+           "SPECIFICITY": 0.15, "ADDRESS": 0.15}
 
 
 def norm(text):
@@ -103,13 +102,16 @@ def score_hook(hook, wpm):
     question = "?" in hook
 
     d = {}
-    # FRONTLOAD: does the payload sit in the first three words?
+    # FRONTLOAD: does the payload sit in the first three words, and is the
+    # whole line done in about 3 seconds?
     head = " ".join(words[:3])
     if (re.search(r"\d", head) or has_any(head, YOU + STAKES_HIGH + STAKES_MID +
         ["nobody", "nadie", "why", "por que"]) or hook.lstrip()[:1] in "\"“«¿"):
         d["FRONTLOAD"] = 100
     else:
         d["FRONTLOAD"] = 75
+    if secs > 3.2:
+        d["FRONTLOAD"] -= 10 if secs <= 4.5 else 20 if secs <= 6 else 35
 
     d["STAKES"] = (100 if has_any(t, STAKES_HIGH) else
                    85 if has_any(t, STAKES_MID) else
@@ -120,8 +122,6 @@ def score_hook(hook, wpm):
     d["SPECIFICITY"] = (100 if number else 90 if quoted else
                         55 if has_any(t, VAGUE) else 75)
     d["ADDRESS"] = (100 if has_any(t, YOU) else 70 if has_any(t, I) else 55)
-    d["BREVITY"] = (100 if secs <= 3.2 else 90 if secs <= 6 else
-                    70 if secs <= 8 else 40)
 
     hits = []
     for phrases, at_start, mult, msg in DEALBREAKERS:

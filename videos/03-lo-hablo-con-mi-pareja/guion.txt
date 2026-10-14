@@ -1,4 +1,4 @@
-# Video 3 – objeción: "lo hablo con mi pareja". Ejecuta: python3 beats.py guion-3.txt --target 30
+# Video 3 – objeción: "lo hablo con mi pareja". Ejecuta: python3 skills/ig-reel/beats.py videos/03-lo-hablo-con-mi-pareja/guion.txt --target 30
 # Una línea = un beat = un cambio en pantalla (texto, zoom o gesto).
 HOOK: No aceptes "lo hablo con mi esposo".
 PROBLEMA: Casi nunca es la pareja.

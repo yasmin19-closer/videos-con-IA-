@@ -1,0 +1,1059 @@
+{
+  "_doc": "Lexicon for humanize.py and detect.py. terms: plain phrases matched case-insensitively on word boundaries; replace '' deletes (with a trailing comma), null flags for a manual rewrite. invisible: Unicode classes by hex codepoint or range. tells: structural regexes; fix null means manual, min_count is how many before it counts.",
+  "terms": [
+    {
+      "term": "it's important to note that",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "it's worth noting that",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "it's worth mentioning that",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "in today's fast-paced world",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "in today's digital age",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "in today's digital landscape",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "in the ever-evolving world of",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "at the end of the day",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "needless to say",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "that being said",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "with that being said",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "all things considered",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "when it comes to",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "in a nutshell",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "delve into",
+      "lang": "en",
+      "replace": "dig into"
+    },
+    {
+      "term": "delves into",
+      "lang": "en",
+      "replace": "digs into"
+    },
+    {
+      "term": "delving into",
+      "lang": "en",
+      "replace": "digging into"
+    },
+    {
+      "term": "utilize",
+      "lang": "en",
+      "replace": "use"
+    },
+    {
+      "term": "utilizes",
+      "lang": "en",
+      "replace": "uses"
+    },
+    {
+      "term": "utilizing",
+      "lang": "en",
+      "replace": "using"
+    },
+    {
+      "term": "leverage",
+      "lang": "en",
+      "replace": "use"
+    },
+    {
+      "term": "leveraging",
+      "lang": "en",
+      "replace": "using"
+    },
+    {
+      "term": "embark on",
+      "lang": "en",
+      "replace": "start"
+    },
+    {
+      "term": "is a testament to",
+      "lang": "en",
+      "replace": "shows"
+    },
+    {
+      "term": "navigate the complexities of",
+      "lang": "en",
+      "replace": "handle"
+    },
+    {
+      "term": "elevate your",
+      "lang": "en",
+      "replace": "improve your"
+    },
+    {
+      "term": "cutting-edge",
+      "lang": "en",
+      "replace": "new"
+    },
+    {
+      "term": "game-changer",
+      "lang": "en",
+      "replace": "big change"
+    },
+    {
+      "term": "game changer",
+      "lang": "en",
+      "replace": "big change"
+    },
+    {
+      "term": "a myriad of",
+      "lang": "en",
+      "replace": "many"
+    },
+    {
+      "term": "myriad",
+      "lang": "en",
+      "replace": "many"
+    },
+    {
+      "term": "a plethora of",
+      "lang": "en",
+      "replace": "lots of"
+    },
+    {
+      "term": "in order to",
+      "lang": "en",
+      "replace": "to"
+    },
+    {
+      "term": "due to the fact that",
+      "lang": "en",
+      "replace": "because"
+    },
+    {
+      "term": "at this point in time",
+      "lang": "en",
+      "replace": "now"
+    },
+    {
+      "term": "first and foremost",
+      "lang": "en",
+      "replace": "first"
+    },
+    {
+      "term": "each and every",
+      "lang": "en",
+      "replace": "every"
+    },
+    {
+      "term": "commence",
+      "lang": "en",
+      "replace": "start"
+    },
+    {
+      "term": "endeavor",
+      "lang": "en",
+      "replace": "effort"
+    },
+    {
+      "term": "facilitate",
+      "lang": "en",
+      "replace": "help"
+    },
+    {
+      "term": "optimize",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "streamline",
+      "lang": "en",
+      "replace": "simplify"
+    },
+    {
+      "term": "empower",
+      "lang": "en",
+      "replace": "help"
+    },
+    {
+      "term": "harness the power of",
+      "lang": "en",
+      "replace": "use"
+    },
+    {
+      "term": "unleash",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "supercharge",
+      "lang": "en",
+      "replace": "boost"
+    },
+    {
+      "term": "revolutionize",
+      "lang": "en",
+      "replace": "change"
+    },
+    {
+      "term": "meticulous",
+      "lang": "en",
+      "replace": "careful"
+    },
+    {
+      "term": "meticulously",
+      "lang": "en",
+      "replace": "carefully"
+    },
+    {
+      "term": "paramount",
+      "lang": "en",
+      "replace": "key"
+    },
+    {
+      "term": "pivotal",
+      "lang": "en",
+      "replace": "key"
+    },
+    {
+      "term": "crucial",
+      "lang": "en",
+      "replace": "key"
+    },
+    {
+      "term": "robust",
+      "lang": "en",
+      "replace": "solid"
+    },
+    {
+      "term": "seamless",
+      "lang": "en",
+      "replace": "smooth"
+    },
+    {
+      "term": "seamlessly",
+      "lang": "en",
+      "replace": "smoothly"
+    },
+    {
+      "term": "holistic",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "synergy",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "tapestry",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "realm",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "landscape",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "journey",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "unlock your potential",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "unlock the power of",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "take it to the next level",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "level up",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "dive deep",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "deep dive",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "foster",
+      "lang": "en",
+      "replace": "build"
+    },
+    {
+      "term": "bolster",
+      "lang": "en",
+      "replace": "strengthen"
+    },
+    {
+      "term": "underscore",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "showcase",
+      "lang": "en",
+      "replace": "show"
+    },
+    {
+      "term": "showcasing",
+      "lang": "en",
+      "replace": "showing"
+    },
+    {
+      "term": "nuanced",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "ever-evolving",
+      "lang": "en",
+      "replace": "changing"
+    },
+    {
+      "term": "ever-changing",
+      "lang": "en",
+      "replace": "changing"
+    },
+    {
+      "term": "whether you're a beginner or",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "it goes without saying that",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "look no further",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "buckle up",
+      "lang": "en",
+      "replace": null
+    },
+    {
+      "term": "without further ado",
+      "lang": "en",
+      "replace": ""
+    },
+    {
+      "term": "es importante destacar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "es importante mencionar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "es importante señalar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "es importante recordar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "es importante tener en cuenta que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "cabe destacar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "cabe mencionar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "cabe señalar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "cabe recalcar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "vale la pena mencionar que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "en el mundo actual",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "en el mundo de hoy",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "en la era digital",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "en el panorama actual",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "sin lugar a dudas",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "sin duda alguna",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "dicho esto",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "a fin de cuentas",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "no hace falta decir que",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "en pocas palabras",
+      "lang": "es",
+      "replace": ""
+    },
+    {
+      "term": "de manera eficiente",
+      "lang": "es",
+      "replace": "bien"
+    },
+    {
+      "term": "de manera efectiva",
+      "lang": "es",
+      "replace": "bien"
+    },
+    {
+      "term": "de manera significativa",
+      "lang": "es",
+      "replace": "mucho"
+    },
+    {
+      "term": "de forma significativa",
+      "lang": "es",
+      "replace": "mucho"
+    },
+    {
+      "term": "potenciar",
+      "lang": "es",
+      "replace": "mejorar"
+    },
+    {
+      "term": "optimizar",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "implementar",
+      "lang": "es",
+      "replace": "aplicar"
+    },
+    {
+      "term": "llevar a cabo",
+      "lang": "es",
+      "replace": "hacer"
+    },
+    {
+      "term": "a la hora de",
+      "lang": "es",
+      "replace": "al"
+    },
+    {
+      "term": "con el fin de",
+      "lang": "es",
+      "replace": "para"
+    },
+    {
+      "term": "con el objetivo de",
+      "lang": "es",
+      "replace": "para"
+    },
+    {
+      "term": "debido al hecho de que",
+      "lang": "es",
+      "replace": "porque"
+    },
+    {
+      "term": "en el día de hoy",
+      "lang": "es",
+      "replace": "hoy"
+    },
+    {
+      "term": "en la actualidad",
+      "lang": "es",
+      "replace": "hoy"
+    },
+    {
+      "term": "una amplia gama de",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "una gran variedad de",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "un sinfín de",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "esencial",
+      "lang": "es",
+      "replace": "clave"
+    },
+    {
+      "term": "fundamental",
+      "lang": "es",
+      "replace": "clave"
+    },
+    {
+      "term": "primordial",
+      "lang": "es",
+      "replace": "clave"
+    },
+    {
+      "term": "robusto",
+      "lang": "es",
+      "replace": "sólido"
+    },
+    {
+      "term": "robusta",
+      "lang": "es",
+      "replace": "sólida"
+    },
+    {
+      "term": "sinergia",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "sumergirnos en",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "sumérgete en",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "adentrarnos en",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "al siguiente nivel",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "un antes y un después",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "desbloquear tu potencial",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "desata tu potencial",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "libera tu potencial",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "transformar tu",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "revolucionar",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "revolucionario",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "impulsar",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "viaje",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "travesía",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "panorama",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "abanico de posibilidades",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "en el ámbito de",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "navegar por",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "ya seas principiante o",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "no busques más",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "descubre cómo",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "descubre el secreto",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "cambia las reglas del juego",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "sin precedentes",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "de vanguardia",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "innovador",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "integral",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "meticuloso",
+      "lang": "es",
+      "replace": "cuidadoso"
+    },
+    {
+      "term": "meticulosamente",
+      "lang": "es",
+      "replace": "con cuidado"
+    },
+    {
+      "term": "fomentar",
+      "lang": "es",
+      "replace": null
+    },
+    {
+      "term": "en resumidas cuentas",
+      "lang": "es",
+      "replace": ""
+    }
+  ],
+  "invisible": [
+    {
+      "class": "zero-width space",
+      "codepoints": [
+        "200B"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "zero-width non-joiner",
+      "codepoints": [
+        "200C"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "zero-width joiner outside emoji",
+      "codepoints": [
+        "200D"
+      ],
+      "replace": "",
+      "keep_in_emoji": true
+    },
+    {
+      "class": "word joiner",
+      "codepoints": [
+        "2060"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "byte order mark / zero-width no-break space",
+      "codepoints": [
+        "FEFF"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "soft hyphen",
+      "codepoints": [
+        "00AD"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "no-break space",
+      "codepoints": [
+        "00A0"
+      ],
+      "replace": " "
+    },
+    {
+      "class": "narrow no-break space",
+      "codepoints": [
+        "202F"
+      ],
+      "replace": " "
+    },
+    {
+      "class": "figure space",
+      "codepoints": [
+        "2007"
+      ],
+      "replace": " "
+    },
+    {
+      "class": "typographic spaces (en, em, thin, hair...)",
+      "codepoints": [
+        "2000-2006",
+        "2008-200A"
+      ],
+      "replace": " "
+    },
+    {
+      "class": "ideographic space",
+      "codepoints": [
+        "3000"
+      ],
+      "replace": " "
+    },
+    {
+      "class": "left-to-right / right-to-left marks",
+      "codepoints": [
+        "200E",
+        "200F",
+        "061C"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "bidi embeddings and overrides",
+      "codepoints": [
+        "202A-202E"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "bidi isolates",
+      "codepoints": [
+        "2066-2069"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "invisible operators and separators",
+      "codepoints": [
+        "2061-2064",
+        "180E"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "line and paragraph separators",
+      "codepoints": [
+        "2028",
+        "2029"
+      ],
+      "replace": "\n"
+    },
+    {
+      "class": "hangul fillers (blank-looking letters)",
+      "codepoints": [
+        "115F",
+        "1160",
+        "3164",
+        "FFA0"
+      ],
+      "replace": ""
+    },
+    {
+      "class": "tag characters (hidden text) outside emoji flags",
+      "codepoints": [
+        "E0020-E007F"
+      ],
+      "replace": "",
+      "keep_in_emoji": true
+    }
+  ],
+  "tells": [
+    {
+      "id": "em-dash",
+      "name": "Em dash",
+      "pattern": "\\s?—\\s?",
+      "flags": "",
+      "fix": ", ",
+      "min_count": 1,
+      "note": "The punctuation models overuse; a comma or a period reads human."
+    },
+    {
+      "id": "en-dash",
+      "name": "Spaced en dash",
+      "pattern": "\\s–\\s",
+      "flags": "",
+      "fix": ", ",
+      "min_count": 1,
+      "note": "Same tic as the em dash, typed differently."
+    },
+    {
+      "id": "not-x-its-y",
+      "name": "Not X, it's Y",
+      "pattern": "\\b(?:it'?s|this is|that'?s) not (?:just |only |about )?[^,.;\\n]{1,40}[,;] (?:it'?s|but)\\b|\\bno es (?:solo |sólo |solamente )?[^,.;\\n]{1,40}[,;] es\\b",
+      "flags": "i",
+      "fix": null,
+      "min_count": 1,
+      "note": "Say Y directly."
+    },
+    {
+      "id": "not-only-but",
+      "name": "Not only X but Y",
+      "pattern": "\\bnot (?:just|only) [^,.;\\n]{1,40},? but (?:also )?|\\bno (?:solo|sólo|solamente) [^,.;\\n]{1,40},? sino (?:también )?",
+      "flags": "i",
+      "fix": null,
+      "min_count": 1,
+      "note": "Pick the stronger half."
+    },
+    {
+      "id": "rule-of-three",
+      "name": "Rule of three",
+      "pattern": "\\b\\w+, \\w+(?: \\w+)?,? (?:and|y|e) \\w+\\b",
+      "flags": "i",
+      "fix": null,
+      "min_count": 2,
+      "note": "One list of three is fine; a habit of them is a tell. Cut to two or one."
+    },
+    {
+      "id": "transition",
+      "name": "Stock transition opener",
+      "pattern": "(?m)(?:^|(?<=[.!?] ))(?:Moreover|Furthermore|Additionally|In conclusion|In summary|Ultimately|Overall|Notably|Importantly|Además|Asimismo|Por otro lado|En conclusión|En resumen|Por último|Finalmente|En definitiva|De igual manera),\\s*",
+      "flags": "",
+      "fix": "",
+      "min_count": 1,
+      "note": "Delete it; the sentence works without it."
+    },
+    {
+      "id": "double-punct",
+      "name": "Doubled punctuation",
+      "pattern": "([!?])\\1+",
+      "flags": "",
+      "fix": "\\1",
+      "min_count": 1,
+      "note": "One mark is enough."
+    },
+    {
+      "id": "ellipsis",
+      "name": "Ellipsis habit",
+      "pattern": "\\.\\.\\.|…",
+      "flags": "",
+      "fix": null,
+      "min_count": 2,
+      "note": "Trailing off on purpose works once."
+    },
+    {
+      "id": "reveal",
+      "name": "Rhetorical reveal",
+      "pattern": "\\b(?:the|el|la|lo) (?:result|truth|secret|catch|answer|kicker|best part|resultado|verdad|secreto|truco|respuesta|mejor|peor)\\?",
+      "flags": "i",
+      "fix": null,
+      "min_count": 1,
+      "note": "\"The result? X.\" Just say X."
+    },
+    {
+      "id": "heres-the-thing",
+      "name": "Here's the thing",
+      "pattern": "\\bhere'?s the (?:thing|kicker|catch|deal|truth)\\b|\\b(?:y )?aqu[ií] (?:va|est[aá]) (?:la cosa|el truco|lo importante)\\b|\\bte explico:",
+      "flags": "i",
+      "fix": null,
+      "min_count": 1,
+      "note": "Throat-clearing before the point."
+    },
+    {
+      "id": "emoji-bullets",
+      "name": "Emoji bullets",
+      "pattern": "(?m)^\\s*(?:✅|\\U0001F449|\\U0001F680|✨|\\U0001F525|\\U0001F4A1|\\U0001F4CC|⭐|✔️?|➡️?|\\U0001F3AF|\\U0001F4A5)",
+      "flags": "",
+      "fix": null,
+      "min_count": 3,
+      "note": "A stack of emoji-led lines reads as generated."
+    },
+    {
+      "id": "markdown-bold",
+      "name": "Markdown bold",
+      "pattern": "\\*\\*([^*\\n]+)\\*\\*",
+      "flags": "",
+      "fix": "\\1",
+      "min_count": 1,
+      "note": "Instagram shows the asterisks literally."
+    },
+    {
+      "id": "sign-off",
+      "name": "Chatbot sign-off",
+      "pattern": "\\b(?:i hope this helps|hope this helps|let me know if|feel free to|espero que (?:te|les) (?:sirva|ayude)|no dudes en)\\b",
+      "flags": "i",
+      "fix": null,
+      "min_count": 1,
+      "note": "Assistant voice, not yours."
+    },
+    {
+      "id": "exclamations",
+      "name": "Exclamation overload",
+      "pattern": "!",
+      "flags": "",
+      "fix": null,
+      "min_count": 4,
+      "note": "Energy comes from the words, not the marks."
+    },
+    {
+      "id": "chatbot-opener",
+      "name": "Chatbot opener",
+      "pattern": "(?mi)^(?:absolutely|certainly|great question|of course|claro que s[ií]|¡?por supuesto|excelente pregunta)[!,.]\\s*",
+      "flags": "",
+      "fix": "",
+      "min_count": 1,
+      "note": "Nobody opens a caption by agreeing with a question."
+    },
+    {
+      "id": "from-x-to-y",
+      "name": "From X to Y",
+      "pattern": "\\b(?:from|desde) [\\w ]{2,25} (?:to|hasta) [\\w ]{2,25}",
+      "flags": "i",
+      "fix": null,
+      "min_count": 1,
+      "note": "\"From beginners to experts\" means everyone, so no one."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Borrador de ejemplo con tics de IA. Ejecuta: python3 humanize.py draft.txt --report
+# Borrador de ejemplo con tics de IA. Ejecuta: python3 skills/ig-human/humanize.py skills/ig-human/examples/draft.txt --report
 En el mundo actual, cerrar ventas no es solo una habilidad, es un arte. Es importante destacar que la mayoría de los vendedores pierden clientes por no saber responder objeciones. Además, el miedo al rechazo — ese enemigo silencioso — los paraliza en el momento clave.
 
 Cuando un cliente dice "lo voy a pensar", no es un no, es una duda. Sin lugar a dudas, la clave está en preguntar, escuchar y validar. Por otro lado, potenciar tu seguridad te permite llevar tus cierres al siguiente nivel!!

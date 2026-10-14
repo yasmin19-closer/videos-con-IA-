@@ -1,0 +1,225 @@
+{
+  "_doc": "100-point Instagram profile score. Award each check's points fully or not at all; when unsure, don't award it. Score from a screenshot or the pasted profile.",
+  "total": 100,
+  "bands": [
+    {
+      "min": 85,
+      "label": "lista para convertir"
+    },
+    {
+      "min": 70,
+      "label": "sólida, ajustes puntuales"
+    },
+    {
+      "min": 50,
+      "label": "confunde a quien llega nuevo"
+    },
+    {
+      "min": 0,
+      "label": "rehacer antes de invertir en reels"
+    }
+  ],
+  "criteria": [
+    {
+      "id": "photo",
+      "name": "Foto de perfil",
+      "points": 8,
+      "checks": [
+        {
+          "check": "Se ve tu cara, encuadre cerrado (hombros hacia arriba)",
+          "points": 3
+        },
+        {
+          "check": "Contraste alto: se reconoce en tamaño miniatura",
+          "points": 3
+        },
+        {
+          "check": "La misma foto que en tus otras redes",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "name_field",
+      "name": "Campo de nombre (buscable)",
+      "points": 10,
+      "checks": [
+        {
+          "check": "Incluye la palabra clave que te buscarían (p. ej. \"Closer de ventas\")",
+          "points": 6
+        },
+        {
+          "check": "Se lee de un vistazo: sin símbolos raros ni todo en mayúsculas",
+          "points": 2
+        },
+        {
+          "check": "Tu nombre real o de marca también aparece",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "username",
+      "name": "Usuario",
+      "points": 5,
+      "checks": [
+        {
+          "check": "Fácil de decir en voz alta y de escribir",
+          "points": 3
+        },
+        {
+          "check": "Sin números ni guiones bajos de relleno",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "bio_who",
+      "name": "Bio, línea 1: a quién ayudas y a qué",
+      "points": 15,
+      "checks": [
+        {
+          "check": "Nombra a tu cliente ideal (closers, vendedores por WhatsApp...)",
+          "points": 5
+        },
+        {
+          "check": "Nombra el resultado que obtienen, no tu oficio",
+          "points": 6
+        },
+        {
+          "check": "Cabe antes del corte: se entiende sin tocar \"más\"",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "bio_proof",
+      "name": "Bio: prueba",
+      "points": 10,
+      "checks": [
+        {
+          "check": "Un número real (ventas cerradas, alumnos, años)",
+          "points": 6
+        },
+        {
+          "check": "O una credencial o logro verificable",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "bio_cta",
+      "name": "Bio: una sola llamada a la acción",
+      "points": 10,
+      "checks": [
+        {
+          "check": "Una acción clara (\"Escríbeme CIERRE\", \"Guion gratis abajo\")",
+          "points": 6
+        },
+        {
+          "check": "Coincide con lo que pides en tus reels",
+          "points": 4
+        }
+      ]
+    },
+    {
+      "id": "link",
+      "name": "Enlace",
+      "points": 7,
+      "checks": [
+        {
+          "check": "Funciona y carga rápido en el móvil",
+          "points": 3
+        },
+        {
+          "check": "Lleva a un solo destino, o a una página con pocas opciones claras",
+          "points": 2
+        },
+        {
+          "check": "Lo que promete la bio es lo primero que se ve al abrirlo",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "highlights",
+      "name": "Historias destacadas",
+      "points": 10,
+      "checks": [
+        {
+          "check": "Entre 3 y 6 destacadas",
+          "points": 2
+        },
+        {
+          "check": "Nombradas por intención: Empieza aquí, Resultados, Testimonios, Oferta",
+          "points": 4
+        },
+        {
+          "check": "Portadas consistentes y legibles",
+          "points": 2
+        },
+        {
+          "check": "La primera explica quién eres y qué ofreces en menos de 5 historias",
+          "points": 2
+        }
+      ]
+    },
+    {
+      "id": "pinned",
+      "name": "Publicaciones fijadas",
+      "points": 10,
+      "checks": [
+        {
+          "check": "3 fijadas",
+          "points": 2
+        },
+        {
+          "check": "Una es tu reel con más alcance",
+          "points": 3
+        },
+        {
+          "check": "Una cuenta tu historia u origen",
+          "points": 2
+        },
+        {
+          "check": "Una muestra prueba u oferta",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "grid",
+      "name": "Grid (últimas 9 publicaciones)",
+      "points": 10,
+      "checks": [
+        {
+          "check": "Todas sobre tu tema: alguien nuevo entiende de qué va la cuenta",
+          "points": 4
+        },
+        {
+          "check": "Portadas con título legible en miniatura",
+          "points": 3
+        },
+        {
+          "check": "Estilo reconocible (mismo encuadre, colores, tipografía)",
+          "points": 3
+        }
+      ]
+    },
+    {
+      "id": "activity",
+      "name": "Constancia",
+      "points": 5,
+      "checks": [
+        {
+          "check": "Publicaste en los últimos 7 días",
+          "points": 3
+        },
+        {
+          "check": "Ritmo sostenido: al menos 3 publicaciones por semana en el último mes",
+          "points": 2
+        }
+      ]
+    }
+  ]
+}
