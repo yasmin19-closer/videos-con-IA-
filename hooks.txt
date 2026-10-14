@@ -1,0 +1,7 @@
+# Un hook por línea. Ejecuta: python3 hookscore.py hooks.txt
+Hola a todos, hoy les voy a hablar de cómo manejar objeciones de precio en ventas
+¿Te dijeron "lo voy a pensar"? Esto es lo que nunca debes responder
+Deja de bajar el precio cuando te dicen "está caro"
+3 frases para cerrar cuando el cliente dice "no tengo dinero"
+Creo que quizás esta técnica te puede ayudar un poco a vender más.
+Nadie te enseña qué decir cuando el cliente dice "lo hablo con mi esposa"

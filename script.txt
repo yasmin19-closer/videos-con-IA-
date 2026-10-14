@@ -1,0 +1,6 @@
+# Una línea = un beat. Ejecuta: python3 beats.py script.txt --target 30
+HOOK: ¿Te dijeron "lo voy a pensar"? No respondas "ok, te escribo mañana".
+PROBLEMA: Ese "lo voy a pensar" casi nunca es tiempo. Es una duda que no te dijeron.
+GIRO: Así que pregúntale: "Perfecto. ¿Qué parte quieres pensar, el precio o si esto te funciona?"
+PRUEBA: Con esa sola pregunta la objeción real sale en menos de diez segundos, y ahí sí puedes cerrar.
+[CTA] Escríbeme "CIERRE" y te mando el guion completo de objeciones.
