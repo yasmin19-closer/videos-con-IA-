@@ -5,49 +5,80 @@ Usage:
     python3 beats.py script.txt --target 30
     python3 beats.py script.txt --target 45 --wpm 150
 
-Each non-blank line (or paragraph) is one beat. A beat can carry a label:
+Each non-blank line is one beat. A beat can carry a label:
     HOOK: Te dijeron "lo voy a pensar"?
     [CTA] Escribeme "CIERRE" y te mando el guion.
-Lines starting with '#' are ignored. Estimates use words per minute plus
-short pauses for punctuation, so read it aloud once to calibrate --wpm.
+Without labels the first beat is the HOOK, the second starts the MID and the
+last is the CTA. Lines starting with '#' are ignored. Read the script aloud
+once and set --wpm to your real pace.
 """
 import argparse
 import re
 import sys
+import textwrap
+import unicodedata
 
-PAUSE = {".": 0.35, "?": 0.4, "!": 0.35, ",": 0.15, ";": 0.2, ":": 0.25,
-         "…": 0.5}
+WIDTH = 72
+MAX_BEAT = 4.0  # seconds one beat (one frame/shot) can hold attention
 LABEL = re.compile(r"^\s*(?:\[([^\]]+)\]|([A-Za-zÀ-ÿ ]{2,12}):)\s*")
+TOKEN = re.compile(r"[$€]?\d[\d.,]*\d%?|[$€]?\d%?|[\w']+")
+STOP = {"because", "porque", "nobody", "nadie", "every", "never", "nunca",
+        "should", "about", "there", "their", "where", "which", "cuando",
+        "donde", "aceptes", "dijeron"}
+
+
+def norm(text):
+    text = unicodedata.normalize("NFD", text.lower())
+    return "".join(c for c in text if unicodedata.category(c) != "Mn")
 
 
 def parse(text):
     beats = []
-    for block in re.split(r"\n\s*\n", text):
-        for line in block.splitlines():
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue
-            m = LABEL.match(line)
-            label = (m.group(1) or m.group(2)).strip().upper() if m else ""
-            body = line[m.end():] if m else line
-            beats.append((label, body))
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        m = LABEL.match(line)
+        label = (m.group(1) or m.group(2)).strip().upper() if m else ""
+        beats.append([label, line[m.end():] if m else line])
+    if beats and not any(b[0] for b in beats):
+        beats[0][0] = "HOOK"
+        if len(beats) >= 3:
+            beats[1][0] = "MID"
+            beats[-1][0] = "CTA"
     return beats
 
 
-def duration(body, wpm):
-    words = len(re.findall(r"[\w']+", body))
-    pauses = sum(PAUSE.get(c, 0) for c in body.replace("...", "…"))
-    return words, words / wpm * 60 + pauses
+def loop_word(hook, last):
+    """A number, quote or distinctive word from the hook repeated at the end."""
+    quotes = re.findall(r"[\"“«]([^\"”»]+)", hook)
+    tokens = TOKEN.findall(hook)
+    candidates = ([t for t in tokens if re.search(r"\d", t)] + quotes +
+                  [t for t in tokens if len(t) >= 6 and norm(t) not in STOP])
+    end = norm(last)
+    for c in candidates:
+        if re.search(r"(?<!\w)" + re.escape(norm(c)) + r"(?!\w)", end):
+            return c
+    return None
+
+
+def stamp(t):
+    return f"{int(t // 60)}:{t % 60:04.1f}"
+
+
+def note(text):
+    return textwrap.fill(text, WIDTH, initial_indent="  - ",
+                         subsequent_indent="    ")
 
 
 def main():
     ap = argparse.ArgumentParser(description="Estimate spoken length per beat.")
     ap.add_argument("file", help="script file ('-' for stdin)")
     ap.add_argument("--target", type=float, help="target length in seconds")
-    ap.add_argument("--wpm", type=float, default=160,
-                    help="speaking rate in words per minute (default 160)")
+    ap.add_argument("--wpm", type=float, default=165,
+                    help="speaking rate in words per minute (default 165)")
     ap.add_argument("--hook-max", type=float, default=3.0,
-                    help="the first beat should end by this second (default 3)")
+                    help="the hook should be done by this second (default 3)")
     args = ap.parse_args()
 
     src = sys.stdin if args.file == "-" else open(args.file, encoding="utf-8")
@@ -57,44 +88,70 @@ def main():
         sys.exit("no beats found")
 
     rows, t = [], 0.0
-    for i, (label, body) in enumerate(beats, 1):
-        words, secs = duration(body, args.wpm)
-        rows.append((i, label, body, words, t, t + secs, secs))
+    for label, body in beats:
+        words = len(TOKEN.findall(body))
+        secs = words / args.wpm * 60
+        rows.append((label, body, words, t, secs))
         t += secs
     total = t
+    n_words = sum(r[2] for r in rows)
 
-    print(f"{'#':>2}  {'start':>6}  {'end':>6}  {'len':>5}  beat")
-    for i, label, body, words, start, end, secs in rows:
-        tag = f"{label}: " if label else ""
-        text = tag + body
-        if len(text) > 70:
-            text = text[:67] + "..."
-        print(f"{i:>2}  {start:>5.1f}s  {end:>5.1f}s  {secs:>4.1f}s  {text}")
+    head = [f"BEAT SHEET", f"{n_words} words", f"~{total:.1f}s at {args.wpm:g} wpm"]
+    if args.target:
+        head.append(f"target {args.target:.1f}s")
+    print("  ·  ".join(head))
+    print("=" * WIDTH)
 
-    print(f"\nTotal: {total:.1f}s at {args.wpm:g} wpm "
-          f"({sum(r[3] for r in rows)} words, {len(rows)} beats)")
+    lw = max(7, max(len(r[0]) for r in rows) + 1)
+    indent = 2 + 6 + 1 + 5 + 1 + 2 + lw + 1
+    text_w = max(20, WIDTH + 3 - indent)
+    prev, long_beats = None, []
+    for i, (label, body, words, start, secs) in enumerate(rows, 1):
+        shown = label if label != prev else ""
+        prev = label or prev
+        text = body
+        if len(body) > text_w:
+            cut = body[:text_w - 3]
+            text = (cut.rsplit(" ", 1)[0] if " " in cut else cut).rstrip(",;:") + "..."
+        print(f"  {stamp(start)} {secs:5.1f}s  {shown:<{lw}} {text}")
+        if secs > MAX_BEAT and i > 1:
+            long_beats.append(i)
+            print(" " * indent + f"^ {secs:.1f}s on one beat")
+    print("-" * WIDTH)
 
-    hook_end = rows[0][5]
-    if hook_end > args.hook_max:
-        print(f"! Hook ends at {hook_end:.1f}s; get it under {args.hook_max:g}s.")
-    else:
-        print(f"ok Hook lands at {hook_end:.1f}s.")
-
+    hook_secs = rows[0][4]
+    if hook_secs > args.hook_max:
+        print(note(f"Hook runs {hook_secs:.1f}s. Get the payoff out before "
+                   f"{args.hook_max:g}s or the swipe happens first."))
+    if long_beats:
+        nums = [str(n) for n in long_beats]
+        which = (f"Beat {nums[0]} runs" if len(nums) == 1 else
+                 f"Beats {', '.join(nums[:-1])} and {nums[-1]} run")
+        print(note(f"{which} past {MAX_BEAT:g}s. Either split the line or "
+                   "change what is on screen inside it. A static frame is "
+                   "where people leave."))
+    if len(rows) > 1:
+        echo = loop_word(rows[0][1], rows[-1][1])
+        if echo:
+            print(note(f'Loops: the last beat repeats "{echo}" from the hook. '
+                       "Second watches are free reach."))
+        else:
+            print(note("No loop: the last beat shares nothing with the hook. "
+                       "Echo a word or number from it and the replay feels "
+                       "seamless."))
     if args.target:
         diff = total - args.target
-        if abs(diff) <= max(1.0, args.target * 0.05):
-            print(f"ok On target ({args.target:g}s, {diff:+.1f}s).")
-        elif diff > 0:
-            cut = round(diff * args.wpm / 60)
-            print(f"! {diff:.1f}s over {args.target:g}s: cut about {cut} words.")
-            longest = sorted(rows[1:], key=lambda r: r[6], reverse=True)[:3]
-            if longest:
-                print("  Longest beats to trim first: " +
-                      ", ".join(f"#{r[0]} ({r[6]:.1f}s)" for r in longest))
+        delta = int(abs(diff) * args.wpm / 60)
+        if abs(diff) <= 1.0:
+            print(note(f"On target ({diff:+.1f}s)."))
+        elif diff < 0:
+            print(note(f"{-diff:.1f}s under target. Either add {delta} words "
+                       "or shoot it short. Short is usually right."))
         else:
-            room = round(-diff * args.wpm / 60)
-            print(f"~ {-diff:.1f}s under {args.target:g}s: room for about "
-                  f"{room} more words, or leave it as breathing room for b-roll.")
+            longest = max(range(1, len(rows)), key=lambda k: rows[k][4],
+                          default=0) + 1
+            print(note(f"{diff:.1f}s over target. Cut {delta} words, starting "
+                       f"with beat {longest}."))
 
 
 if __name__ == "__main__":

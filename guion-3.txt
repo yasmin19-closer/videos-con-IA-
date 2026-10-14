@@ -1,6 +1,11 @@
-# Video 3 – objeción: "lo consulto con mi pareja". Ejecuta: python3 beats.py guion-3.txt --target 30
+# Video 3 – objeción: "lo hablo con mi pareja". Ejecuta: python3 beats.py guion-3.txt --target 30
+# Una línea = un beat = un cambio en pantalla (texto, zoom o gesto).
 HOOK: No aceptes "lo hablo con mi esposo".
-PROBLEMA: Casi nunca es la pareja. Es una duda que el cliente no se atreve a decirte.
-GIRO: Respóndele: "Claro, es una decisión de los dos. Si fuera solo tuya, ¿lo harías?"
-PRUEBA: Si dice que sí, agendas una llamada con los dos. Si dice que no, ya salió la objeción real.
-[CTA] Comenta "PAREJA" y te mando qué responder en cada caso.
+PROBLEMA: Casi nunca es la pareja.
+Es una duda que el cliente no se atreve a decirte.
+GIRO: Respóndele: "Claro, es una decisión de los dos.
+Pero si fuera solo tuya, ¿lo harías?"
+PRUEBA: ¿Dice que sí? Agendas una llamada con los dos.
+¿Dice que no? Ya salió la objeción real.
+CTA: Comenta "PAREJA" y te mando el guion completo.
+Y no te congeles más con "lo hablo con mi esposo".
