@@ -1,0 +1,8 @@
+# Carrusel: 5 objeciones high ticket. Ejecuta: python3 skills/ig-human/detect.py videos/05-carrusel-objeciones/carrusel.txt
+5 objeciones. 5 preguntas. Lo que respondo en cada llamada high ticket.
+"Lo voy a pensar." Pregunta: "Perfecto. ¿Qué parte quieres pensar: el precio o si esto te funciona?" Casi nunca es tiempo. Es una duda que todavía no te dijo.
+"No tengo el dinero." Pregunta: "¿No lo tienes, o no lo tienes para esto?" Separa la falta de dinero de la falta de valor. El valor se trabaja.
+"Lo hablo con mi pareja." Pregunta: "Claro, es de los dos. Si fuera solo tu decisión, ¿lo harías?" Si dice que sí, agendas con los dos. Si dice que no, salió la objeción real.
+"No es buen momento." Pregunta: "¿Qué tendría que pasar para que fuera el momento?" El momento deja de ser una excusa y se vuelve una condición que puedes resolver.
+"Mándame información." Pregunta: "Claro. ¿Qué tendrías que ver ahí para decir que sí?" La información no cierra. Esa respuesta te dice qué duda resolver en la llamada.
+¿Cuál te cuesta más? Comenta "OBJECIONES" y te mando el guion completo.

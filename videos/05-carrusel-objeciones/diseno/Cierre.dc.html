@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cierre: comenta OBJECIONES</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#F3F0EA}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 88px 88px 80px; background: #151515; color: #F3F0EA; font-family: 'Archivo', sans-serif; display: flex; flex-direction: column; justify-content: space-between">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 30px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase">Tu turno</span>
+<span style="font-size: 30px; font-weight: 700">[@TU_USUARIO]</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 48px">
+<h2 style="margin: 0; font-size: 168px; line-height: 0.9; font-weight: 900; font-stretch: 72%; letter-spacing: -0.02em; text-transform: uppercase">¿Cuál te cuesta más?</h2>
+<p style="margin: 0; font-size: 46px; line-height: 1.25; font-weight: 500; max-width: 860px">Tengo el guion completo con lo que digo después de cada pregunta.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 18px; background: {{accent}}; color: #FFFFFF; padding: 52px 56px; border-radius: 28px">
+<span style="font-size: 32px; font-weight: 700">Comenta la palabra</span>
+<span style="font-size: 120px; line-height: 1; font-weight: 900; font-stretch: 72%; letter-spacing: 0.01em">OBJECIONES</span>
+<span style="font-size: 32px; font-weight: 700">y te lo mando por mensaje.</span>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; border-top: 3px solid #F3F0EA; padding-top: 32px">
+<span style="font-size: 30px; font-weight: 700">Una objeción nueva cada miércoles</span>
+<span style="font-size: 30px; font-weight: 800">Closer high ticket</span>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C8261C","options":["#C8261C","#151515","#1F4FD1"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#C8261C' };
+}
+}
+</script>
+</body>
+</html>
