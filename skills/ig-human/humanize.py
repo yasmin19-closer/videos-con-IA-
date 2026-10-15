@@ -137,4 +137,7 @@ def main():
 
 
 if __name__ == "__main__":
+    import signal
+    if hasattr(signal, "SIGPIPE"):  # quiet exit when piped into head
+        signal.signal(signal.SIGPIPE, signal.SIG_DFL)
     main()
