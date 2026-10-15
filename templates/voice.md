@@ -8,7 +8,7 @@ instrucciones entre paréntesis cuando termines.
 ## Quién soy
 
 - Nombre o marca:
-- A qué me dedico, en una frase: (p. ej. "Entreno closers de ventas high ticket")
+- A qué me dedico, en una frase: Closer high ticket. Enseño a manejar objeciones en ventas.
 - Por qué me deberían creer: (números reales: ventas cerradas, años, alumnos)
 
 ## A quién le hablo
@@ -20,8 +20,8 @@ instrucciones entre paréntesis cuando termines.
 
 ## Cómo hablo
 
-- Tuteo / usted / vos:
-- Largo de frase: (corto y directo, o explico con calma)
+- Tuteo / usted / vos: tuteo
+- Largo de frase: corto y directo, frases que se puedan copiar tal cual
 - Energía: (tranquila, intensa, divertida, seria)
 - Groserías o modismos que sí uso:
 - Frases mías que repito: (muletillas buenas, cómo saludo cuando sí saludo,
@@ -29,13 +29,13 @@ instrucciones entre paréntesis cuando termines.
 
 ## Palabras
 
-- Siempre digo: (p. ej. "cierre", "llamada", "prospecto")
+- Siempre digo: high ticket, cierre, objeción, cliente (añade las tuyas)
 - Nunca digo: (palabras que suenan a otra persona o a IA: "potenciar",
   "al siguiente nivel", "sinergia"...)
 
 ## Cómo pido la acción
 
-- Palabra clave para comentarios: (p. ej. CIERRE, PAREJA)
+- Palabra clave para comentarios: una por video (PAREJA, DINERO...)
 - Qué envío cuando comentan: (guion, PDF, audio)
 - Dónde está mi oferta: (link en bio, DM, llamada)
 

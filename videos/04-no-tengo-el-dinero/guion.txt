@@ -1,0 +1,11 @@
+# Ejecuta: python3 skills/ig-reel/beats.py videos/04-no-tengo-el-dinero/guion.txt --target 30
+# Una línea = un beat = un cambio en pantalla (texto, zoom o gesto).
+HOOK: ¿Te dicen "no tengo el dinero"? Pregunta esto.
+PROBLEMA: En high ticket, casi nunca es el dinero.
+Es que todavía no ve que esto vale lo que cuesta.
+GIRO: Así que no ofrezcas cuotas. Pregúntale:
+"¿No lo tienes, o no lo tienes para esto?"
+PRUEBA: Si es "no lo tengo para esto", el problema es valor.
+Y el valor se trabaja. El precio no se toca.
+CTA: Comenta "DINERO" y te mando qué decir después.
+Porque la próxima vez que escuches "no tengo el dinero"…

@@ -1,0 +1,20 @@
+# Ejecuta: python3 skills/ig-reel/hookscore.py videos/04-no-tengo-el-dinero/hooks.txt
+# Video 4 – objeción high ticket: "no tengo el dinero"
+# 6 Contrarian
+"No tengo el dinero" casi nunca es por el dinero
+# 18 Roleplay
+Cliente: "No tengo el dinero". Yo: ¿no lo tienes o no lo tienes para esto?
+# 5 Callout
+¿Te dicen "no tengo el dinero"? Pregunta esto
+# 1 Stop Doing
+Deja de ofrecer cuotas cuando te dicen "no tengo el dinero"
+# 8 Script
+Cuando te digan "no tengo el dinero", responde así
+# 15 Worst
+La peor respuesta a "no tengo el dinero"
+# 4 Loss
+Perdí una venta de $5,000 por aceptar "no tengo el dinero"
+# 9 Steal
+Róbate esta pregunta para "no tengo el dinero"
+# 25 Price Tag
+Cada "no tengo el dinero" que aceptas te cuesta una venta
