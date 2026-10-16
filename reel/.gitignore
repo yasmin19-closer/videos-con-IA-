@@ -5,3 +5,6 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Tu vídeo original se queda solo en este entorno
+public/original.mp4
