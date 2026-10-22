@@ -41,5 +41,7 @@ exacto de cada palabra).
 | `scripts/cut.py` | Transcribe, quita silencios y muletillas, genera `words.ts`. Opciones: `--pausa 0.5`, `--sin-cortes`. |
 | `scripts/transcribe.py` | Transcripción con faster-whisper (modelo con `WHISPER_MODEL=small/medium`). |
 | `scripts/fixes.py` | Corrige nombres que la transcripción escucha mal. Agrega aquí los tuyos. |
+| `scripts/make_music.py` | Genera música lo-fi sin derechos: `python scripts/make_music.py musica.wav 60 95` |
+| `ejemplos/` | Los video.tsx de videos ya hechos, para copiar ideas. |
 | `scripts/make_sfx.py` | Genera los efectos whoosh, pop, ding, click y boom. |
 | `scripts/render.sh` | Render final con música opcional (baja sola cuando hablas) y volumen normalizado. |

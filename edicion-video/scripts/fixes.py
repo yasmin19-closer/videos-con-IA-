@@ -12,6 +12,9 @@ MULTI = [
     (["google", "g-level"], "GoHighLevel"),
     (["high", "level"], "HighLevel"),
     (["cloud", "cowork"], "Claude Cowork"),
+    (["high", "sticker"], "High Ticket"),
+    (["high", "tiket"], "High Ticket"),
+    (["jai", "ticket"], "High Ticket"),
 ]
 SINGLE = {
     "cloud": "Claude", "clod": "Claude", "gojalevel": "GoHighLevel", "gohighlevel": "GoHighLevel",

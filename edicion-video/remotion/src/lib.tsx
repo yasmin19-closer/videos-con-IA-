@@ -41,9 +41,9 @@ const FULL = { x: 0, y: 0, w: W, h: H, r: 0 };
 /** Pantalla completa con zoom. Dos punch() seguidos = corte seco (punch-in). */
 export const punch = (z = 1): Box => ({ ...FULL, z, sub: 1290 });
 /** Cámara pequeña abajo a la derecha; el contenido va en CARD_AREA. */
-export const PIP: Box = { x: 600, y: 1290, w: 420, h: 560, r: 40, z: 1, sub: 1040 };
+export const PIP: Box = { x: 600, y: 1290, w: 420, h: 560, r: 40, z: 1.6, sub: 1040 };
 /** Cámara en la mitad de arriba; el contenido va en SPLIT_CARD. */
-export const SPLIT: Box = { x: 0, y: 0, w: W, h: 960, r: 0, z: 1, sub: 800 };
+export const SPLIT: Box = { x: 0, y: 0, w: W, h: 960, r: 0, z: 1.1, sub: 800 };
 /** Cámara redonda pequeña para el cierre (EndTitle). Sin subtítulos. */
 export const END: Box = { x: 390, y: 380, w: 300, h: 300, r: 150, z: 1.3, sub: null };
 
@@ -73,7 +73,8 @@ const useBox = (keys: CamKey[]): Box => {
   };
 };
 
-export const Camera: React.FC<{ keys: CamKey[] }> = ({ keys }) => {
+/** focusY: altura de tu cara en el video original, en % desde arriba (los zooms se centran ahí). */
+export const Camera: React.FC<{ keys: CamKey[]; focusY?: number }> = ({ keys, focusY = 35 }) => {
   const b = useBox(keys);
   const full = b.w >= W - 1 && b.h >= H - 1;
   return (
@@ -96,9 +97,9 @@ export const Camera: React.FC<{ keys: CamKey[] }> = ({ keys }) => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          objectPosition: "50% 30%",
+          objectPosition: `50% ${focusY}%`,
           transform: `scale(${b.z})`,
-          transformOrigin: "50% 35%",
+          transformOrigin: `50% ${focusY}%`,
         }}
       />
     </div>
@@ -660,5 +661,84 @@ export const Sounds: React.FC<{ list: Sfx[] }> = ({ list }) => {
         </Sequence>
       ))}
     </>
+  );
+};
+
+// ───────────────────────── muestra de reels ─────────────────────────
+
+export type ReelItem = { at: number; title: string; src?: string };
+
+/** Tarjetas tipo celular con reels (abanico de 3). src = archivo en public/ (ej. "reels/1.mp4"); sin src se ve el título. */
+export const ReelCards: React.FC<{ from: number; to: number; items: ReelItem[] }> = ({ from, to, items }) => {
+  const { t, frame, fps } = useT();
+  if (t < from || t > to) return null;
+  const out = interpolate(t, [to - 0.25, to], [1, 0], clamp);
+  const n = items.length;
+  return (
+    <div style={{ position: "absolute", top: 210, left: 0, width: W, height: 640, opacity: out, fontFamily: FONT }}>
+      {items.map((it, i) => {
+        const p = spring({ frame: frame - Math.round(it.at * fps), fps, config: { damping: 13, mass: 0.6 } });
+        const off = i - (n - 1) / 2;
+        const cw = 300;
+        return (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: W / 2 - cw / 2 + off * 320,
+              top: Math.abs(off) * 40,
+              width: cw,
+              height: cw * (16 / 9),
+              borderRadius: 34,
+              overflow: "hidden",
+              border: "6px solid #111",
+              background: `linear-gradient(160deg, ${C.violet}, #1b1030 60%, ${C.bg})`,
+              boxShadow: "0 30px 70px rgba(0,0,0,0.6)",
+              opacity: p,
+              transform: `translateY(${(1 - p) * 120}px) rotate(${off * 7}deg) scale(${0.7 + p * 0.3})`,
+            }}
+          >
+            {it.src ? (
+              <OffthreadVideo
+                src={staticFile(it.src)}
+                muted
+                startFrom={0}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            ) : (
+              <div
+                style={{
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 90,
+                  color: C.white,
+                  opacity: 0.9,
+                }}
+              >
+                ▶
+              </div>
+            )}
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                padding: "40px 18px 20px",
+                background: "linear-gradient(transparent, rgba(0,0,0,0.85))",
+                color: C.white,
+                fontWeight: 900,
+                fontSize: 30,
+                lineHeight: 1.1,
+              }}
+            >
+              {it.title}
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
 };
