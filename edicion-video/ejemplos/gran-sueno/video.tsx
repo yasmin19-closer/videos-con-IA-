@@ -44,10 +44,10 @@ const KEYS: CamKey[] = [
   { at: 25.3, box: PIP },
   { at: 29.1, box: punch(1.0) },
   { at: 31.9, box: PIP },
-  { at: 37.5, box: punch(1.0) },
-  { at: 40.1, box: punch(1.12) }, // "tranquilo"
-  { at: 41.85, box: SPLIT },
-  { at: 48.15, box: punch(1.2) }, // "quédate"
+  { at: 36.97, box: punch(1.0) },
+  { at: 39.57, box: punch(1.12) }, // "tranquilo"
+  { at: 41.32, box: SPLIT },
+  { at: 47.62, box: punch(1.2) }, // "quédate"
 ];
 
 const KEYWORDS = [
@@ -55,7 +55,7 @@ const KEYWORDS = [
   "documentar", "cliente", "humor", "habilidad", "2026", "tips",
 ];
 
-const HIDE_SUBS: [number, number][] = [[48.15, 99]];
+const HIDE_SUBS: [number, number][] = [[47.62, 99]];
 
 // whoosh = cambio de encuadre · pop = ítem nuevo · ding = número o logro · boom = zoom de remate
 const SFX: Sfx[] = [
@@ -80,14 +80,14 @@ const SFX: Sfx[] = [
   { at: 30.54, f: "pop" },
   { at: 31.9, f: "whoosh" },
   { at: 33.58, f: "pop" },
-  { at: 36.22, f: "ding", v: 0.6 },
-  { at: 37.5, f: "whoosh" },
-  { at: 40.1, f: "boom", v: 0.4 },
-  { at: 41.85, f: "whoosh" },
-  { at: 45.28, f: "pop" },
-  { at: 46.24, f: "pop" },
-  { at: 48.15, f: "boom", v: 0.5 },
-  { at: 50.08, f: "ding", v: 0.6 },
+  { at: 35.69, f: "ding", v: 0.6 },
+  { at: 36.97, f: "whoosh" },
+  { at: 39.57, f: "boom", v: 0.4 },
+  { at: 41.32, f: "whoosh" },
+  { at: 44.75, f: "pop" },
+  { at: 45.71, f: "pop" },
+  { at: 47.62, f: "boom", v: 0.5 },
+  { at: 49.55, f: "ding", v: 0.6 },
 ];
 
 const Scenes = () => (
@@ -129,38 +129,38 @@ const Scenes = () => (
     {/* FULL 29.1–31.9: el reto */}
     <LowerThird from={30.54} to={31.85} tag="Reto" text="Documento todo mi proceso" />
 
-    {/* PIP 31.9–37.5: lo que vas a ver */}
-    <Card from={32.0} to={37.4} style={CARD_AREA}>
+    {/* PIP 31.9–36.97: lo que vas a ver */}
+    <Card from={32.0} to={36.87} style={CARD_AREA}>
       <Chip color={C.violet}>Vas a ver</Chip>
       <Title>Todo mi proceso real</Title>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Node at={32.3} n="01" label="Aprendizajes" accent={C.violet} />
         <Arrow at={33.2} />
         <Node at={33.58} n="02" label="Rechazos" accent={C.violet} />
-        <Arrow at={35.3} />
-        <Node at={36.22} n="03" label="1er cliente" accent={C.lime} />
+        <Arrow at={34.77} />
+        <Node at={35.69} n="03" label="1er cliente" accent={C.lime} />
       </div>
     </Card>
 
-    {/* SPLIT 41.85–48.1: la invitación */}
-    <Card from={41.95} to={48.05} style={SPLIT_CARD}>
+    {/* SPLIT 41.32–47.57: la invitación */}
+    <Card from={41.42} to={47.52} style={SPLIT_CARD}>
       <Chip color={C.lime}>En este 2026</Chip>
       <Title size={58}>Aprende una nueva habilidad</Title>
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <Row at={45.28}>Una habilidad que paga</Row>
-        <Row at={46.24}>Dale valor a tu vida</Row>
+        <Row at={44.75}>Una habilidad que paga</Row>
+        <Row at={45.71}>Dale valor a tu vida</Row>
       </div>
     </Card>
 
-    {/* Punch-in 48.15–fin: cierre */}
+    {/* Punch-in 47.62–fin: cierre */}
     <Quote
-      from={48.15}
+      from={47.62}
       to={99}
       mark="tips"
       lines={[
-        [["Quédate", 48.24]],
-        [["te", 49.52], ["daré", 49.76]],
-        [["todos", 50.08], ["mis", 50.32], ["tips", 50.48]],
+        [["Quédate", 47.71]],
+        [["te", 48.99], ["daré", 49.23]],
+        [["todos", 49.55], ["mis", 49.79], ["tips", 49.95]],
       ]}
     />
   </>
