@@ -27,11 +27,11 @@ import {
   punch,
 } from "./lib";
 
-// Reels de muestra: cuando tengas los videos, guárdalos en public/reels/ y pon src: "reels/1.mp4"
+// Reels de muestra: recortes de 5 s guardados en public/reels/
 const REELS = [
-  { at: 0.25, title: "El gran sueño" },
-  { at: 1.2, title: "El control 😂" },
-  { at: 2.2, title: "¿Quién será ese Jeison?" },
+  { at: 0.25, title: "El gran sueño", src: "reels/1.mp4" },
+  { at: 1.2, title: "El control 😂", src: "reels/2.mp4" },
+  { at: 2.2, title: "¿Quién será ese Jeison?", src: "reels/3.mp4" },
 ];
 
 const KEYS: CamKey[] = [

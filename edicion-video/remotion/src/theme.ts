@@ -17,7 +17,7 @@ export const C = {
 };
 
 // Texto fijo que aparece arriba en todo el video (tu nombre o tu @)
-export const BRAND = "Yasmin Albert · Closer";
+export const BRAND = "@yasminalvarez_closer";
 
 export const FONT = "Inter Display";
 

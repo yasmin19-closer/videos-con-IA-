@@ -12,6 +12,7 @@ MULTI = [
     (["google", "g-level"], "GoHighLevel"),
     (["high", "level"], "HighLevel"),
     (["cloud", "cowork"], "Claude Cowork"),
+    (["yasmin", "albert"], "Yasmin Alvarez"),
     (["high", "sticker"], "High Ticket"),
     (["high", "tiket"], "High Ticket"),
     (["jai", "ticket"], "High Ticket"),
