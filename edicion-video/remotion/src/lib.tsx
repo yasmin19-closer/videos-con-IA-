@@ -134,19 +134,18 @@ export const Brand: React.FC = () => (
   <div
     style={{
       position: "absolute",
-      top: 70,
+      top: 62,
       width: "100%",
-      textAlign: "center",
+      display: "flex",
+      justifyContent: "center",
       fontFamily: FONT,
       fontWeight: 700,
       fontSize: 30,
-      letterSpacing: 2,
+      letterSpacing: 1,
       color: C.white,
-      opacity: 0.8,
-      textShadow: "0 2px 12px rgba(0,0,0,0.7)",
     }}
   >
-    {BRAND}
+    <span style={{ padding: "8px 22px", borderRadius: 999, background: "rgba(0,0,0,0.45)" }}>{BRAND}</span>
   </div>
 );
 
@@ -281,7 +280,7 @@ export const Counter: React.FC<{ at: number; to: number; dur?: number; prefix?: 
   return (
     <>
       {prefix}
-      {Math.round(v).toLocaleString("es")}
+      {Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
       {suffix}
     </>
   );
@@ -742,3 +741,99 @@ export const ReelCards: React.FC<{ from: number; to: number; items: ReelItem[] }
     </div>
   );
 };
+
+// ───────────────────────── ilustraciones (emoji grandes) ─────────────────────────
+
+/** Dibujo simple: emoji grande con etiqueta. strikeAt lo tacha; okAt le pone ✓; ring lo hace vibrar (llamada). */
+export const Picto: React.FC<{
+  at: number;
+  icon: string;
+  label?: React.ReactNode;
+  size?: number;
+  accent?: string;
+  strikeAt?: number;
+  okAt?: number;
+  ring?: boolean;
+}> = ({ at, icon, label, size = 130, accent = C.violet, strikeAt, okAt, ring }) => {
+  const { t, frame, fps } = useT();
+  const p = usePop(at, 11);
+  const strike = strikeAt === undefined ? 0 : interpolate(t, [strikeAt, strikeAt + 0.25], [0, 1], clamp);
+  const ok = okAt === undefined ? 0 : spring({ frame: frame - Math.round(okAt * fps), fps, config: { damping: 10 } });
+  const wobble = ring && t > at ? Math.sin(frame * 1.6) * 9 * Math.max(0, Math.sin((t - at) * 3)) : 0;
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 12,
+        opacity: p,
+        transform: `translateY(${(1 - p) * 50}px) scale(${0.5 + p * 0.5})`,
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: size * 1.35,
+          height: size * 1.35,
+          borderRadius: "50%",
+          background: `${accent}22`,
+          border: `4px solid ${accent}66`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: size,
+          lineHeight: 1,
+          transform: `rotate(${wobble}deg)`,
+          opacity: 1 - strike * 0.5,
+        }}
+      >
+        {icon}
+        {strike > 0 ? (
+          <div
+            style={{
+              position: "absolute",
+              width: `${strike * 120}%`,
+              height: 12,
+              background: C.red,
+              borderRadius: 6,
+              transform: "rotate(-35deg)",
+            }}
+          />
+        ) : null}
+        {ok > 0 ? (
+          <div
+            style={{
+              position: "absolute",
+              right: -6,
+              bottom: -6,
+              width: size * 0.5,
+              height: size * 0.5,
+              borderRadius: "50%",
+              background: C.lime,
+              color: C.bg,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: size * 0.32,
+              fontWeight: 900,
+              transform: `scale(${ok})`,
+            }}
+          >
+            ✓
+          </div>
+        ) : null}
+      </div>
+      {label ? (
+        <div style={{ fontSize: 34, fontWeight: 800, textAlign: "center", maxWidth: size * 2, lineHeight: 1.1 }}>
+          {label}
+        </div>
+      ) : null}
+    </div>
+  );
+};
+
+/** Fila de Picto (y Arrow) repartidos a lo ancho. */
+export const PictoRow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>{children}</div>
+);

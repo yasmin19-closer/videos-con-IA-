@@ -1,6 +1,6 @@
 """Prepara un video nuevo: crea trabajos/edicion-<nombre>/ con una copia de la plantilla de Remotion,
 corta silencios y genera los subtítulos.
-Uso: python reel_prep.py "<video.mp4>" [nombre] [--pausa 0.35] [--quitar palabra ...] [--sin-cortes]
+Uso: python reel_prep.py "<video.mp4>" [nombre] [--pausa 0.35] [--quitar palabra ...] [--quitar-tramo 1.2-3.4 ...] [--sin-cortes]
 Después: edita trabajos/edicion-<nombre>/remotion/src/video.tsx y renderiza con render.sh."""
 import os
 import re

@@ -1,5 +1,5 @@
 """Corta silencios y muletillas de un video y genera los subtítulos para Remotion.
-Uso: python cut.py <video.mp4> <carpeta remotion> [--pausa 0.35] [--quitar palabra ...] [--sin-cortes]
+Uso: python cut.py <video.mp4> <carpeta remotion> [--pausa 0.35] [--quitar palabra ...] [--quitar-tramo 1.2-3.4 ...] [--sin-cortes]
 Deja: <remotion>/public/cut.mp4, <remotion>/src/words.ts y transcripcion.txt (para leer el texto con tiempos)."""
 import argparse
 import json
@@ -26,10 +26,11 @@ def duration(path):
     return float(out.strip())
 
 
-def keep_ranges(words, total, pause, quitar=()):
+def keep_ranges(words, total, pause, quitar=(), tramos=()):
     """Tramos a conservar: se unen palabras separadas por menos de `pause` segundos."""
     drop = FILLERS | {q.lower() for q in quitar}
-    spoken = [w for w in words if w["w"].lower().strip(".,;:?!¿¡") not in drop]
+    spoken = [w for w in words if w["w"].lower().strip(".,;:?!¿¡") not in drop
+              and not any(a <= w["s"] < b for a, b in tramos)]
     ranges = []
     for w in spoken:
         a, b = max(0, w["s"] - PAD), min(total, w["e"] + PAD)
@@ -66,6 +67,8 @@ def main():
     ap.add_argument("video"); ap.add_argument("remotion")
     ap.add_argument("--pausa", type=float, default=0.35, help="pausas más largas que esto se cortan")
     ap.add_argument("--quitar", nargs="+", default=[], help="palabras a borrar del video (ej. --quitar ojalá)")
+    ap.add_argument("--quitar-tramo", nargs="+", default=[], metavar="INICIO-FIN",
+                    help="borra lo que se dice entre esos segundos del video original (ej. 29.4-30.05)")
     ap.add_argument("--sin-cortes", action="store_true", help="solo transcribir, sin cortar silencios")
     a = ap.parse_args()
 
@@ -76,7 +79,8 @@ def main():
         print("Transcribiendo...")
         words = fix_words(transcribe(wav))
 
-    ranges, spoken = keep_ranges(words, total, a.pausa, a.quitar)
+    tramos = [tuple(float(x) for x in t.split("-")) for t in a.quitar_tramo]
+    ranges, spoken = keep_ranges(words, total, a.pausa, a.quitar, tramos)
     if a.sin_cortes:
         ranges = [(0.0, round(total, 3))]
     new_words, dur = retime(spoken if not a.sin_cortes else words, ranges)

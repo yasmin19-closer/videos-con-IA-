@@ -14,12 +14,13 @@ MULTI = [
     (["cloud", "cowork"], "Claude Cowork"),
     (["yasmin", "albert"], "Yasmin Alvarez"),
     (["high", "sticker"], "High Ticket"),
+    (["high", "ticker"], "High Ticket"),
     (["high", "tiket"], "High Ticket"),
     (["jai", "ticket"], "High Ticket"),
 ]
 SINGLE = {
     "cloud": "Claude", "clod": "Claude", "gojalevel": "GoHighLevel", "gohighlevel": "GoHighLevel",
-    "8n": "n8n", "ene8ene": "n8n", "vídeo": "video",
+    "8n": "n8n", "high-ticker": "High Ticket", "high-ticket": "High Ticket", "ene8ene": "n8n", "vídeo": "video",
 }
 
 
