@@ -36,9 +36,9 @@ def _sherpa(wav, d):
             words[-1]["w"] += tok
             if tok.strip(".,;:?!¿¡"):  # la puntuación llega tarde: no alarga la palabra
                 words[-1]["e"] = ts + 0.08
-    # el fin de cada palabra llega hasta poco antes de la siguiente (máx. 0.25 s de cola)
+    # el fin de cada palabra llega hasta poco antes de la siguiente (máx. 0.12 s de cola)
     for a, b in zip(words, words[1:]):
-        a["e"] = min(max(a["e"], b["s"] - 0.05), a["e"] + 0.25)
+        a["e"] = min(max(a["e"], b["s"] - 0.05), a["e"] + 0.12)
     words[-1]["e"] = min(words[-1]["e"] + 0.3, len(audio) / sr)
     return [{"w": w["w"], "s": round(w["s"], 3), "e": round(w["e"], 3)} for w in words]
 

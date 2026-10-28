@@ -20,7 +20,7 @@ MULTI = [
 ]
 SINGLE = {
     "cloud": "Claude", "clod": "Claude", "gojalevel": "GoHighLevel", "gohighlevel": "GoHighLevel",
-    "8n": "n8n", "high-ticker": "High Ticket", "high-ticket": "High Ticket", "ene8ene": "n8n", "vídeo": "video",
+    "8n": "n8n", "high-ticker": "High Ticket", "guárlo": "Guárdalo", "high-ticket": "High Ticket", "ene8ene": "n8n", "vídeo": "video",
 }
 
 

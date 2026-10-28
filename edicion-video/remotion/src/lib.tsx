@@ -39,7 +39,7 @@ export type CamKey = { at: number; box: Box };
 const FULL = { x: 0, y: 0, w: W, h: H, r: 0 };
 
 /** Pantalla completa con zoom. Dos punch() seguidos = corte seco (punch-in). */
-export const punch = (z = 1): Box => ({ ...FULL, z, sub: 1290 });
+export const punch = (z = 1): Box => ({ ...FULL, z, sub: 1380 });
 /** Cámara pequeña abajo a la derecha; el contenido va en CARD_AREA. */
 export const PIP: Box = { x: 600, y: 1290, w: 420, h: 560, r: 40, z: 1.6, sub: 1040 };
 /** Cámara en la mitad de arriba; el contenido va en SPLIT_CARD. */
@@ -837,3 +837,127 @@ export const Picto: React.FC<{
 export const PictoRow: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-around" }}>{children}</div>
 );
+
+// ───────────────────────── stickers, progreso y cierre ─────────────────────────
+
+/** Emoji que salta junto a tu cara (x, y en px del video 1080×1920) y se va solo. */
+export const Sticker: React.FC<{ at: number; to?: number; icon: string; x: number; y: number; size?: number; rot?: number }> = ({
+  at,
+  to,
+  icon,
+  x,
+  y,
+  size = 150,
+  rot = -10,
+}) => {
+  const { t, frame, fps } = useT();
+  const end = to ?? at + 1.8;
+  if (t < at || t > end) return null;
+  const p = spring({ frame: frame - Math.round(at * fps), fps, config: { damping: 8, mass: 0.5 } });
+  const out = interpolate(t, [end - 0.2, end], [1, 0], clamp);
+  const float = Math.sin((t - at) * 4) * 8;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: x - size / 2,
+        top: y - size / 2 + float,
+        fontSize: size,
+        lineHeight: 1,
+        opacity: out,
+        transform: `scale(${p}) rotate(${rot * p}deg)`,
+        filter: "drop-shadow(0 12px 24px rgba(0,0,0,0.45))",
+      }}
+    >
+      {icon}
+    </div>
+  );
+};
+
+/** Barra fina arriba que se llena durante el video (da ganas de verlo hasta el final). */
+export const StoryProgress: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { durationInFrames } = useVideoConfig();
+  return (
+    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 10, background: "rgba(255,255,255,0.15)" }}>
+      <div
+        style={{
+          height: "100%",
+          width: `${(frame / durationInFrames) * 100}%`,
+          background: `linear-gradient(90deg, ${C.violet}, ${C.lime})`,
+        }}
+      />
+    </div>
+  );
+};
+
+/** Cierre: botones "Guárdalo" y "Sígueme" que se presionan solos, con tu @ debajo. Deja tu cara visible. */
+export const FollowCTA: React.FC<{ from: number; saveAt: number; followAt: number; handle: string }> = ({
+  from,
+  saveAt,
+  followAt,
+  handle,
+}) => {
+  const { t, frame, fps } = useT();
+  if (t < from) return null;
+  const btn = (at: number, icon: string, text: string, color: string) => {
+    const p = spring({ frame: frame - Math.round(at * fps), fps, config: { damping: 10, mass: 0.5 } });
+    const press = interpolate(t, [at + 0.5, at + 0.6, at + 0.75], [1, 0.88, 1], clamp);
+    const done = t > at + 0.6;
+    return (
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 16,
+          padding: "26px 44px",
+          borderRadius: 999,
+          background: done ? color : C.card,
+          border: `4px solid ${color}`,
+          color: done ? C.bg : C.white,
+          fontWeight: 900,
+          fontSize: 50,
+          opacity: p,
+          transform: `scale(${(0.6 + p * 0.4) * press})`,
+          boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+        }}
+      >
+        <span>{done ? "✓" : icon}</span>
+        {text}
+      </div>
+    );
+  };
+  const hp = spring({ frame: frame - Math.round((followAt + 0.6) * fps), fps, config: { damping: 14 } });
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 1300,
+        left: 0,
+        right: 0,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 28,
+        fontFamily: FONT,
+      }}
+    >
+      {btn(saveAt, "📌", "Guárdalo", C.lime)}
+      {btn(followAt, "➕", "Sígueme", C.violet)}
+      <div
+        style={{
+          marginTop: 6,
+          padding: "10px 26px",
+          borderRadius: 999,
+          background: "rgba(0,0,0,0.55)",
+          color: C.white,
+          fontWeight: 700,
+          fontSize: 36,
+          opacity: hp,
+        }}
+      >
+        {handle}
+      </div>
+    </div>
+  );
+};
