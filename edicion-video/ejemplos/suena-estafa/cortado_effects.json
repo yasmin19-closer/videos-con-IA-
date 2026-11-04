@@ -1,0 +1,39 @@
+{
+ "effects": [
+  {
+   "fx": "glass-widgets",
+   "start": 0.0,
+   "end": 2.3,
+   "title": "Gurú",
+   "text": "10K",
+   "sub": "en 7 días|sin experiencia",
+   "name": "Yasmin",
+   "handle": "@closerconyasmin",
+   "song": "promesas falsas",
+   "day": "HOY",
+   "date": "1",
+   "event": "Hazte millonario"
+  },
+  {
+   "fx": "orbit",
+   "start": 2.3,
+   "end": 5.4,
+   "images": "/home/user/videos-con-IA-/edicion-video/trabajos/edicion-gran-sueno/remotion/public/reels"
+  },
+  {
+   "fx": "spotlight",
+   "start": 48.2,
+   "end": 52.35,
+   "text": "DESCONFÍA"
+  },
+  {
+   "fx": "comment-box",
+   "start": 52.4,
+   "end": 55.55,
+   "text": "A MÍ SÍ",
+   "handle": "closerconyasmin",
+   "reply": "¡Te leo! Cuéntame tu historia",
+   "chip": "Closers desde Cero"
+  }
+ ]
+}

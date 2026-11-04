@@ -130,24 +130,29 @@ export const Background: React.FC = () => {
   );
 };
 
-export const Brand: React.FC = () => (
-  <div
-    style={{
-      position: "absolute",
-      top: 62,
-      width: "100%",
-      display: "flex",
-      justifyContent: "center",
-      fontFamily: FONT,
-      fontWeight: 700,
-      fontSize: 30,
-      letterSpacing: 1,
-      color: C.white,
-    }}
-  >
-    <span style={{ padding: "8px 22px", borderRadius: 999, background: "rgba(0,0,0,0.45)" }}>{BRAND}</span>
-  </div>
-);
+/** hide: tramos [inicio, fin] sin la marca (por ejemplo, cuando un efecto ocupa la parte de arriba). */
+export const Brand: React.FC<{ hide?: [number, number][] }> = ({ hide = [] }) => {
+  const { t } = useT();
+  if (hide.some(([a, b]) => t >= a && t < b)) return null;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 62,
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        fontFamily: FONT,
+        fontWeight: 700,
+        fontSize: 30,
+        letterSpacing: 1,
+        color: C.white,
+      }}
+    >
+      <span style={{ padding: "8px 22px", borderRadius: 999, background: "rgba(0,0,0,0.45)" }}>{BRAND}</span>
+    </div>
+  );
+};
 
 // ───────────────────────── tarjetas ─────────────────────────
 
