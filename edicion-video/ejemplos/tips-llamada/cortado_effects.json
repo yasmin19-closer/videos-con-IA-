@@ -1,0 +1,42 @@
+{
+ "effects": [
+  {
+   "fx": "shortcut-rain",
+   "start": 0.0,
+   "end": 3.5,
+   "text": "TIPS|LLAMADA|VENTA|5 PASOS|40 seg|CLOSER|CIERRE",
+   "count": "22"
+  },
+  {
+   "fx": "red-collage",
+   "start": 15.9,
+   "end": 19.95,
+   "text": "NO CONFÍES",
+   "lines": "¿TUS LESIONES?|¿TUS HORARIOS?|¿LO QUE COMES?",
+   "tag": " ",
+   "color": "D97757"
+  },
+  {
+   "fx": "backdrop-word",
+   "start": 20.55,
+   "end": 23.05,
+   "text": "VENTAS",
+   "color": "D97757",
+   "font": "serif"
+  },
+  {
+   "fx": "dot-reveal",
+   "start": 23.1,
+   "end": 26.0,
+   "color": "D97757",
+   "bg": "141413"
+  },
+  {
+   "fx": "fan-build",
+   "start": 59.45,
+   "end": 64.9,
+   "images": "/home/user/videos-con-IA-/edicion-video/trabajos/edicion-tips-llamada/pasos",
+   "count": "10"
+  }
+ ]
+}

@@ -4,6 +4,7 @@ import { AbsoluteFill, Composition, useCurrentFrame } from "remotion";
 import { BRAND, C, FONT, FONT_FACES } from "../../remotion/src/theme";
 import { DIA2 } from "./dia2";
 import { Lujo, LUJO_COUNT } from "./lujo";
+import { Pasos, PASOS_COUNT } from "./pasos";
 
 export const CW = 1080;
 export const CH = 1350;
@@ -80,5 +81,6 @@ export const Root: React.FC = () => (
   <>
     <Composition id="dia2" component={() => <Deck slides={DIA2} />} durationInFrames={DIA2.length} fps={1} width={CW} height={CH} />
     <Composition id="lujo" component={Lujo} durationInFrames={LUJO_COUNT} fps={1} width={540} height={960} />
+    <Composition id="pasos" component={Pasos} durationInFrames={PASOS_COUNT} fps={1} width={540} height={960} />
   </>
 );
