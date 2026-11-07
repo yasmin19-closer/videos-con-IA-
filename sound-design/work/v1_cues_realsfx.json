@@ -1,0 +1,29 @@
+{
+ "video": "video de objecion.mp4",
+ "keep_audio": "auto",
+ "cues": [
+  {
+   "t": 0.285,
+   "label": "V1-C01 zoom-out apertura",
+   "file": "fuentes/generadas/v1_c01_swipe_velvet.wav",
+   "role": "whoosh",
+   "anchor": "peak",
+   "gain_db": -8.5
+  },
+  {
+   "t": 32.936,
+   "label": "V1-C02 push-in final",
+   "file": "fuentes/generadas/v1_c02_whoosh_windy.wav",
+   "role": "whoosh",
+   "anchor": "peak",
+   "gain_db": -6
+  }
+ ],
+ "base_audio": [
+  {
+   "file": "stems/v1_voz_voice.wav",
+   "voice": true,
+   "keep_level": true
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "summary": "wrote v2_c03_pop_knock.wav: pro_pop_in/knock seed 399595374: 0.152 s, onset 0.002 s, peak at 0.011 s, end 0.063 s, -1.0 dBFS, -19.7 LUFS momentary max; checks: clean",
+ "file": "v2_c03_pop_knock.wav",
+ "meta": {
+  "id": "pro_pop_in/knock",
+  "seed": 399595374,
+  "sr": 48000,
+  "onset_s": 0.0015,
+  "peak_s": 0.0115,
+  "end_s": 0.063,
+  "dur_s": 0.152,
+  "peak_db": -1.0,
+  "lufs_m_max": -19.68,
+  "edits": {},
+  "checks": {
+   "ok": true,
+   "warnings": [],
+   "notes": [],
+   "summary": "pro_pop_in/knock: clean",
+   "measures": {
+    "clicks": 0,
+    "edge_db": -240.0,
+    "clip_runs": 0,
+    "overs": 0,
+    "dc_db": -94.0,
+    "ring_z": null,
+    "trunc_db": null,
+    "silence_ms": 0.0,
+    "bump_db": 0.0,
+    "attack_ms": 5.0,
+    "t40_ms": 50.0,
+    "crest_db": 12.0,
+    "res_db": 2.5,
+    "res_hz": 241,
+    "peak_dbfs": -1.0,
+    "live_ms": 46.0
+   },
+   "glide": {
+    "tonal_share": 1.0,
+    "rise_st": 0.0,
+    "from_s": null,
+    "to_s": null
+   },
+   "layers": {
+    "attacks": [
+     0.018
+    ],
+    "count": 1,
+    "pre_swell_ms": 0.0
+   },
+   "context": {
+    "category": "pro_pop_in",
+    "sound": "pro_pop_in/knock"
+   }
+  }
+ }
+}

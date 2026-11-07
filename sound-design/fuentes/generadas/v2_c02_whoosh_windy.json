@@ -1,0 +1,75 @@
+{
+ "summary": "wrote v2_c02_whoosh_windy.wav: pro_whoosh_big/windy seed 23895038: 0.600 s, onset 0.062 s, peak at 0.330 s, end 0.518 s, -1.0 dBFS, -15.8 LUFS momentary max; apex 0.330 s (measured 0.330, -0 ms); dur 0.600 s (shape, trim 130 ms (fade 150 ms)); checks: clean",
+ "file": "v2_c02_whoosh_windy.wav",
+ "meta": {
+  "id": "pro_whoosh_big/windy",
+  "seed": 23895038,
+  "sr": 48000,
+  "onset_s": 0.0622,
+  "peak_s": 0.3295,
+  "end_s": 0.518,
+  "dur_s": 0.6,
+  "peak_db": -1.0,
+  "lufs_m_max": -15.82,
+  "edits": {
+   "apex": {
+    "target": 0.33,
+    "measured": 0.3295,
+    "err_ms": -0.5,
+    "search_err_ms": 9.5,
+    "rise": 0.30724,
+    "renders": 3,
+    "fit": "head trim 10.0 ms",
+    "ok": true
+   },
+   "dur": {
+    "target": 0.6,
+    "method": "shape",
+    "post_scale": 0.6266,
+    "renders": 3,
+    "fit": "trim 130 ms (fade 150 ms)"
+   }
+  },
+  "checks": {
+   "ok": true,
+   "warnings": [],
+   "notes": [],
+   "summary": "pro_whoosh_big/windy: clean",
+   "measures": {
+    "clicks": 0,
+    "edge_db": -240.0,
+    "clip_runs": 0,
+    "overs": 0,
+    "dc_db": -98.0,
+    "ring_z": 4.7,
+    "trunc_db": null,
+    "silence_ms": 0.0,
+    "bump_db": 0.0,
+    "attack_ms": 2.75,
+    "t40_ms": 190.0,
+    "crest_db": 11.2,
+    "res_db": 3.2,
+    "res_hz": 1068,
+    "peak_dbfs": -1.0,
+    "live_ms": 374.75
+   },
+   "glide": {
+    "tonal_share": 0.64,
+    "rise_st": 0.0,
+    "from_s": null,
+    "to_s": null
+   },
+   "layers": {
+    "attacks": [
+     0.323
+    ],
+    "count": 1,
+    "pre_swell_ms": 150.0
+   },
+   "context": {
+    "category": "pro_whoosh_big",
+    "sound": "pro_whoosh_big/windy"
+   }
+  }
+ }
+}

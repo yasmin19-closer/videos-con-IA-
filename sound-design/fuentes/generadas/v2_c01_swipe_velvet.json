@@ -1,0 +1,80 @@
+{
+ "summary": "wrote v2_c01_swipe_velvet.wav: swipe/velvet seed 968699985: 0.500 s, onset 0.005 s, peak at 0.299 s, end 0.463 s, -1.0 dBFS, -13.3 LUFS momentary max; apex 0.300 s (measured 0.299, -0 ms); dur 0.500 s (shape, trim 201 ms (fade 125 ms)); checks: clean",
+ "file": "v2_c01_swipe_velvet.wav",
+ "meta": {
+  "id": "swipe/velvet",
+  "seed": 968699985,
+  "sr": 48000,
+  "onset_s": 0.005,
+  "peak_s": 0.2995,
+  "end_s": 0.463,
+  "dur_s": 0.5,
+  "peak_db": -1.0,
+  "lufs_m_max": -13.35,
+  "edits": {
+   "apex": {
+    "target": 0.3,
+    "measured": 0.2995,
+    "err_ms": -0.5,
+    "search_err_ms": 3.5,
+    "rise": 0.25327,
+    "renders": 3,
+    "fit": "head trim 4.0 ms",
+    "ok": true
+   },
+   "dur": {
+    "target": 0.5,
+    "method": "shape",
+    "post_scale": 0.226,
+    "renders": 3,
+    "fit": "trim 201 ms (fade 125 ms)"
+   }
+  },
+  "checks": {
+   "ok": true,
+   "warnings": [],
+   "notes": [
+    {
+     "code": "tail",
+     "msg": "the tail rises again by 7 dB (a second event, a roll or a double member)"
+    }
+   ],
+   "summary": "swipe/velvet: clean (the tail rises again by 7 dB (a second event, a roll or a double member))",
+   "measures": {
+    "clicks": 0,
+    "edge_db": -240.0,
+    "clip_runs": 0,
+    "overs": 0,
+    "dc_db": -89.5,
+    "ring_z": 6.1,
+    "trunc_db": null,
+    "silence_ms": 0.0,
+    "bump_db": 6.9,
+    "attack_ms": 1.0,
+    "t40_ms": 160.0,
+    "crest_db": 8.2,
+    "res_db": 3.5,
+    "res_hz": 1131,
+    "peak_dbfs": -1.0,
+    "live_ms": 421.0
+   },
+   "glide": {
+    "tonal_share": 0.76,
+    "rise_st": 0.6,
+    "from_s": 0.156,
+    "to_s": 0.161
+   },
+   "layers": {
+    "attacks": [
+     0.297
+    ],
+    "count": 1,
+    "pre_swell_ms": 165.0
+   },
+   "context": {
+    "category": "swipe",
+    "sound": "swipe/velvet"
+   }
+  }
+ }
+}

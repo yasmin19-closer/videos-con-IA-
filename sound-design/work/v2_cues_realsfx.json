@@ -1,0 +1,37 @@
+{
+ "video": "video objecion 2.mp4",
+ "keep_audio": "auto",
+ "cues": [
+  {
+   "t": 0.757,
+   "label": "V2-C01 zoom rebote apertura",
+   "file": "fuentes/generadas/v2_c01_swipe_velvet.wav",
+   "role": "whoosh",
+   "anchor": "peak",
+   "gain_db": -11.5
+  },
+  {
+   "t": 28.091,
+   "label": "V2-C02 punch-in final",
+   "file": "fuentes/generadas/v2_c02_whoosh_windy.wav",
+   "role": "whoosh",
+   "anchor": "peak",
+   "gain_db": -5
+  },
+  {
+   "t": 28.357,
+   "label": "V2-C03 llegada plano cercano",
+   "file": "fuentes/generadas/v2_c03_pop_knock.wav",
+   "role": "pop",
+   "anchor": "start",
+   "gain_db": 0
+  }
+ ],
+ "base_audio": [
+  {
+   "file": "stems/v2_voz_voice.wav",
+   "voice": true,
+   "keep_level": true
+  }
+ ]
+}
