@@ -1,0 +1,36 @@
+[
+ {
+  "id": "P-C01",
+  "video": "original_whatsapp.mp4",
+  "t_s": "0.367",
+  "inicio_archivo_s": "0.017",
+  "ancla": "peak",
+  "accion_visible": "Reencuadre de cámara al arrancar: el plano se desplaza y se asienta (0.33–0.57 s, máximo desplazamiento 0.367 s, f11)",
+  "familia": "whoosh corto suave",
+  "prioridad": "alta",
+  "duracion_s": "0.600",
+  "archivo": "fuentes/generadas/p_c01_swipe_velvet.wav",
+  "origen": "generado con Earshot (sfx bank: swipe/velvet --dur 0.6 --apex 0.35, seed 968699985)",
+  "ganancia_cue_db": -9,
+  "nivel_en_mezcla": "-23.2 LUFS momentáneo (la voz de 1 a 3 s está a -12.6 LUFS)",
+  "contexto_voz": "antes y debajo de la primera palabra",
+  "revisar": "sí"
+ },
+ {
+  "id": "P-EXIST",
+  "video": "original_whatsapp.mp4",
+  "t_s": "58.650",
+  "inicio_archivo_s": "",
+  "ancla": "",
+  "accion_visible": "Jingle tonal ya incrustado en el cierre (58.65–60.54 s; notas Do6, Sol6, La6 y Do7) sobre la sonrisa final",
+  "familia": "efecto existente (conservado)",
+  "prioridad": "alta",
+  "duracion_s": "1.890",
+  "archivo": "(en el audio original)",
+  "origen": "audio original",
+  "ganancia_cue_db": -12,
+  "nivel_en_mezcla": "-10.9 LUFS (bajado 12 dB antes del compresor; estaba 8 dB por encima de la voz)",
+  "contexto_voz": "tras la última frase",
+  "revisar": "sí"
+ }
+]

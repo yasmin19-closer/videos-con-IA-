@@ -1,0 +1,5 @@
+{"video": "original_whatsapp.mp4", "keep_audio": "auto",
+ "base_audio": [{"file": "stems/p_voz_voice.wav", "keep_level": true}],
+ "cues": [
+  {"t": 0.367, "label": "P-C01 reencuadre de camara al arrancar", "file": "fuentes/generadas/p_c01_swipe_velvet.wav", "role": "whoosh", "anchor": "peak", "gain_db": -9}
+ ]}

@@ -1,0 +1,83 @@
+{
+ "video": "original_whatsapp.mp4",
+ "duration": 60.541711,
+ "keep_audio": true,
+ "beats_used": false,
+ "beat_check": null,
+ "original_audio": "work/r/p_base.wav",
+ "quiet": null,
+ "bed": null,
+ "sfx_track_in_mix_level": "work/r/p_sfx_track_in_mix_level.wav",
+ "base_audio": [
+  "stems/p_voz_voice.wav"
+ ],
+ "base_gain_db": 0.0,
+ "flags": {
+  "duck": false,
+  "voice_safe": true,
+  "voice_depth": "light",
+  "snap_beats": false,
+  "lead_ms": 0.0
+ },
+ "sfx_ducked": "work/r/p_sfx_ducked.wav",
+ "loudness": {
+  "sfx": {
+   "lufs": -35.4,
+   "lra": 7.8,
+   "true_peak": -18.0
+  },
+  "final": {
+   "lufs": -14.9,
+   "lra": 2.9,
+   "true_peak": -1.0
+  },
+  "gain_db": 11.2,
+  "note": "true peak of the file pulled to -1.0 dBTP (AAC overshoot: 1 place(s) of the encoder's own overshoot dipped locally, up to 3.8 dB for 120 ms (11.47s); the whole ceiling lowered 1 step(s); gain +11.2 dB)"
+ },
+ "voice_key": true,
+ "voice_stems": [
+  "stems/p_voz_voice.wav"
+ ],
+ "voice_stem_gain_db": 0.0,
+ "output": "work/r/p.mp4",
+ "_draft": null,
+ "cues": [
+  {
+   "t": 0.367,
+   "label": "P-C01 reencuadre de camara al arrancar",
+   "file": "fuentes/generadas/p_c01_swipe_velvet.wav",
+   "role": "whoosh",
+   "anchor": "peak",
+   "gain_db": -9,
+   "gain_applied_db": -17.0,
+   "peak_time": 0.35,
+   "peak_db": -1.0,
+   "arrive_time": null,
+   "start": 0.017,
+   "seg": 0.6,
+   "source": "library",
+   "fx": "",
+   "_layer": false,
+   "pitch": 0,
+   "slice": null,
+   "slice_of": null,
+   "same_source": false,
+   "texture": false,
+   "bed": false,
+   "library": "?",
+   "tier": "?",
+   "source_file": "fuentes/generadas/p_c01_swipe_velvet.wav",
+   "capped_db": 0.0,
+   "comp_db": 0.0,
+   "peak_after_db": -18.0,
+   "loud_after_db": -37.6,
+   "level_adj_db": 0.0,
+   "onset_shift_ms": 0,
+   "pan": null,
+   "g_author": null,
+   "mono": null,
+   "tonal": null,
+   "snapped_ms": null
+  }
+ ]
+}

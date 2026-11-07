@@ -1,0 +1,75 @@
+{
+ "summary": "wrote p_c01_swipe_velvet.wav: swipe/velvet seed 968699985: 0.600 s, onset 0.029 s, peak at 0.349 s, end 0.520 s, -1.0 dBFS, -17.4 LUFS momentary max; apex 0.350 s (measured 0.349, -0 ms); dur 0.600 s (shape, trim 121 ms (fade 150 ms)); checks: clean",
+ "file": "p_c01_swipe_velvet.wav",
+ "meta": {
+  "id": "swipe/velvet",
+  "seed": 968699985,
+  "sr": 48000,
+  "onset_s": 0.0285,
+  "peak_s": 0.3495,
+  "end_s": 0.52,
+  "dur_s": 0.6,
+  "peak_db": -1.0,
+  "lufs_m_max": -17.35,
+  "edits": {
+   "apex": {
+    "target": 0.35,
+    "measured": 0.3495,
+    "err_ms": -0.5,
+    "search_err_ms": -6.5,
+    "rise": 0.29549,
+    "renders": 3,
+    "fit": "head pad 6.0 ms",
+    "ok": true
+   },
+   "dur": {
+    "target": 0.6,
+    "method": "shape",
+    "post_scale": 0.15,
+    "renders": 3,
+    "fit": "trim 121 ms (fade 150 ms)"
+   }
+  },
+  "checks": {
+   "ok": true,
+   "warnings": [],
+   "notes": [],
+   "summary": "swipe/velvet: clean",
+   "measures": {
+    "clicks": 0,
+    "edge_db": -240.0,
+    "clip_runs": 0,
+    "overs": 0,
+    "dc_db": -108.5,
+    "ring_z": 5.7,
+    "trunc_db": null,
+    "silence_ms": 0.0,
+    "bump_db": 0.9,
+    "attack_ms": 3.25,
+    "t40_ms": 160.0,
+    "crest_db": 12.0,
+    "res_db": 4.4,
+    "res_hz": 1425,
+    "peak_dbfs": -1.0,
+    "live_ms": 431.5
+   },
+   "glide": {
+    "tonal_share": 0.37,
+    "rise_st": 0.0,
+    "from_s": null,
+    "to_s": null
+   },
+   "layers": {
+    "attacks": [
+     0.357
+    ],
+    "count": 1,
+    "pre_swell_ms": 320.0
+   },
+   "context": {
+    "category": "swipe",
+    "sound": "swipe/velvet"
+   }
+  }
+ }
+}
