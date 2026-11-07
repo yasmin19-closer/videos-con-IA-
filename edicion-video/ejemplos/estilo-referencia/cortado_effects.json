@@ -1,0 +1,4 @@
+{"effects": [
+ {"fx": "backdrop-word", "start": 2.85, "end": 5.35, "text": "HUMO", "color": "F08A3C", "font": "bold"},
+ {"fx": "red-collage", "start": 36.4, "end": 40.45, "text": "$0", "lines": "¿NO HAY VENTA?|¿NO HAY CIERRE?|NO HAY COMISIÓN", "tag": " ", "color": "F08A3C"}
+]}
