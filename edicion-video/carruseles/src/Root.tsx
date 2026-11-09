@@ -6,6 +6,7 @@ import { DIA2 } from "./dia2";
 import { Lujo, LUJO_COUNT } from "./lujo";
 import { Pasos, PASOS_COUNT } from "./pasos";
 import { PortadaCloser } from "./portada";
+import { LinkedinBanner } from "./linkedin";
 
 export const CW = 1080;
 export const CH = 1350;
@@ -83,6 +84,7 @@ export const Root: React.FC = () => (
     <Composition id="dia2" component={() => <Deck slides={DIA2} />} durationInFrames={DIA2.length} fps={1} width={CW} height={CH} />
     <Composition id="lujo" component={Lujo} durationInFrames={LUJO_COUNT} fps={1} width={540} height={960} />
     <Composition id="pasos" component={Pasos} durationInFrames={PASOS_COUNT} fps={1} width={540} height={960} />
+    <Composition id="linkedin-banner" component={LinkedinBanner} durationInFrames={1} fps={1} width={1584} height={396} />
     <Composition id="portada-closer" component={PortadaCloser} durationInFrames={1} fps={1} width={1080} height={1920} />
   </>
 );
